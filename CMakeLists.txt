@@ -9,13 +9,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(litebch src/LiteBCH.cpp)
 add_library(litebch::litebch ALIAS litebch)
 
-# Include Configuration
 target_include_directories(litebch PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
-    # Fix for broken environment
-    "/Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1"
 )
+
+if(NOT EMSCRIPTEN)
+    target_include_directories(litebch PUBLIC 
+    # Fix for broken environment (Native Only)
+    "/Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1"
+    )
+endif()
 
 # Compiler Options (Optimization by default for Release)
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -70,6 +74,8 @@ if(LITEBCH_BUILD_WASM)
         "SHELL:-sMODULARIZE=1"
         "SHELL:-sEXPORT_NAME='createLiteBCHModule'"
         "SHELL:-sALLOW_MEMORY_GROWTH=1"
+        "SHELL:-fexceptions"
+        "SHELL:-sDISABLE_EXCEPTION_CATCHING=0"
     )
     
     # Set output name to litebch.js (and litebch.wasm)

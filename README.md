@@ -96,10 +96,29 @@ You can compile LiteBCH for the web using Emscripten.
 emcmake cmake -B build-wasm -DLITEBCH_BUILD_WASM=ON
 
 # Build
-cmake --build build-wasm
+cmake --build build_wasm
 
 # Output: build-wasm/litebch.js and build-wasm/litebch.wasm
 ```
+
+### 4. Interactive Web Demo (Verified)
+We include a robust browser-based demo in `examples/web_demo.html`.
+- **Features**: Configurable N/t, Error Injection, and **In-Browser Supertest**.
+- **Run**:
+  ```bash
+  python3 -m http.server
+  # Open http://localhost:8000/examples/web_demo.html
+  ```
+
+### 5. WASM Verification Suite
+We don't just compile to WASM; we **verify** it bit-for-bit against the C++ Legacy implementation using `tests/wasm_supertest.js`.
+- **Coverage**: Small ($N=31$) to XX-Large ($N=8191$) + Custom Polynomials.
+- **Checks**:
+    - **Encoder Consistency**: `encode_fast()` (Byte-Wise) == `encode()` (Legacy Bit-Wise).
+    - **Decoder Correctness**: Recovers from $t$ errors.
+    - **Boundary Safety**: Fails gracefuly (or detects mismatch) on $t+1$ errors.
+    - **Regression Safety**: Hardcoded Golden Checksums for every config.
+- **Run**: `node tests/wasm_supertest.js`
 
 ## 🔄 Migration from aff3ct
 

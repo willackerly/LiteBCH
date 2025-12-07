@@ -1,138 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>LiteBCH WASM Demo</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        textarea { width: 100%; height: 100px; margin-bottom: 1rem; }
-        button { padding: 0.5rem 1rem; cursor: pointer; }
-        .output { background: #f4f4f4; padding: 1rem; border-radius: 4px; font-family: monospace; word-break: break-all; }
-        .error { color: red; }
-        .success { color: green; }
-    </style>
-</head>
-<body>
-    <h1>LiteBCH WASM Demo</h1>
-    <p>Load <code>litebch.js</code> and run BCH encoding/decoding in the browser.</p>
-    
-    <div>
-        <label>Input Message (Text):</label><br>
-        <textarea id="inputMsg">Hello, WASM World!</textarea>
-        <button onclick="runDemo()">Encode & Decode</button>
-    </div>
-
-    <h3>Log:</h3>
-    <div id="log" class="output">Loading WASM...</div>
-
-    <!-- 
-      Note: You must serve this file and the build-wasm directory via a web server 
-      due to WASM loading restrictions (CORS/MIME types).
-      e.g. python3 -m http.server
-    -->
-    <script src="../build-wasm/litebch.js"></script>
-    <script>
-        let ModuleInstance = null;
-
-        // Initialize Module
-        createLiteBCHModule().then(instance => {
-            ModuleInstance = instance;
-            log("WASM Module Loaded. Ready.");
-        });
-
-        function log(msg, type='') {
-            const el = document.getElementById('log');
-            el.innerHTML += `<div class="${type}">${msg}</div>`;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #f9f9f9;
+            color: #333;
         }
 
-        function runDemo() {
-            if (!ModuleInstance) {
-                log("Module not loaded yet.", 'error');
-                return;
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        select,
+        textarea,
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        button {
+            background: #0056b3;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #004494;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .secondary {
+            background: #6c757d;
+        }
+
+        .secondary:hover {
+            background: #5a6268;
+        }
+
+        .output-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            margin-bottom: 0.25rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.25rem;
+        }
+
+        .log-time {
+            color: #888;
+            font-size: 0.8em;
+            margin-right: 0.5rem;
+        }
+
+        .success {
+            color: #50fa7b;
+        }
+
+        .error {
+            color: #ff5555;
+        }
+
+        .info {
+            color: #8be9fd;
+        }
+
+        .check {
+            color: #f1fa8c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LiteBCH WASM Demo</h1>
+
+    <div class="card">
+        <div class="row">
+            <div class="col">
+                <label>Configuration</label>
+                <select id="configSelect" onchange="updateConfigDisplay()">
+                    <option value="small">Small (N=31, t=3)</option>
+                    <option value="medium">Medium (N=255, t=10)</option>
+                    <option value="large">Large (N=1023, t=50) [Custom Poly]</option>
+                    <option value="xl">X-Large (N=4095, t=20)</option>
+                    <option value="xxl">XX-Large (N=8191, t=40)</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Error Injection (Bits)</label>
+                <input type="number" id="errorCount" value="5" min="0">
+            </div>
+        </div>
+
+        <label>Input Message</label>
+        <textarea id="inputMsg" placeholder="Type text to encode...">LiteBCH is fast and robust.</textarea>
+
+        <div style="margin-top: 1rem;">
+            <button onclick="runEncodeDecode()">Run Encode/Decode Cycle</button>
+            <button class="secondary" onclick="runHealthCheck()">Run Supertest Health Check</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <label>System Log</label>
+        <div id="log" class="output-box">Initializing WASM runtime...</div>
+        <div style="margin-top: 0.5rem; text-align: right;">
+            <button class="secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="clearLog()">Clear
+                Log</button>
+        </div>
+    </div>
+
+    <!-- Load WASM -->
+    <script src="../build_wasm/litebch.js"></script>
+    <script>
+        let Module = null;
+        let isReady = false;
+
+        // Configuration Map
+        const CONFIGS = {
+            'small': { m: 5, t: 3, poly: [] },
+            'medium': { m: 8, t: 10, poly: [] },
+            'large': { m: 10, t: 50, poly: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1] },
+            'xl': { m: 12, t: 20, poly: [] },
+            'xxl': { m: 13, t: 40, poly: [] }
+        };
+
+        // Initialize
+        createLiteBCHModule().then(instance => {
+            Module = instance;
+            isReady = true;
+            log("WASM Runtime Ready.", "success");
+            try {
+                if (Module.HEAP8) log(`Emscripten Heap: ${(Module.HEAP8.length / 1024 / 1024).toFixed(1)} MB`);
+            } catch (e) { console.warn("Heap check failed", e); }
+
+            // Trigger UI update
+            updateConfigDisplay();
+        }).catch(err => {
+            log("Critical Error: Failed to load WASM module.", "error");
+            console.error(err);
+        });
+
+        // Logging Utils
+        function log(msg, type = 'info') {
+            const el = document.getElementById('log');
+            const time = new Date().toISOString().split('T')[1].slice(0, 8);
+            const entry = `<div class="log-entry"><span class="log-time">[${time}]</span><span class="${type}">${msg}</span></div>`;
+            el.insertAdjacentHTML('beforeend', entry);
+            el.scrollTop = el.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('log').innerHTML = '';
+        }
+
+        function updateConfigDisplay() {
+            const cfgName = document.getElementById('configSelect').value;
+            const cfg = CONFIGS[cfgName];
+            const N = (1 << cfg.m) - 1;
+            // Approximate K (we don't know exact K until we instantiate, but we can guess or just say "Variable")
+            // Actually let's assume standard parameters for display:
+            let estK = N - cfg.m * cfg.t;
+            if (estK < 1) estK = "Unknown";
+
+            const estChars = Math.floor(estK / 8);
+
+            // Update placeholder
+            document.getElementById('inputMsg').placeholder = `Type text... (Max ~${estChars} chars for one block)`;
+
+            // Update default errors to be 't' (Recoverable)
+            document.getElementById('errorCount').value = cfg.t;
+        }
+
+        // Helpers
+        function stringToBits(str, K) {
+            const encoder = new TextEncoder();
+            const bytes = encoder.encode(str);
+            const bits = new Module.IntVector();
+
+            // MSB-First Packing (Verified in Supertest)
+            // But we simply push bits sequentially.
+            // TextEncoder gives bytes. We push 8 bits per byte, MSB first (0x80 down to 0x01).
+            // Stop when we hit K bits or end of string.
+
+            let bitCount = 0;
+            for (let i = 0; i < bytes.length; ++i) {
+                const b = bytes[i];
+                for (let j = 7; j >= 0; --j) {
+                    if (bitCount >= K) break;
+                    bits.push_back((b >>> j) & 1);
+                    bitCount++;
+                }
+            }
+            // Pad remaining with 0
+            while (bitCount < K) {
+                bits.push_back(0);
+                bitCount++;
+            }
+            return bits;
+        }
+
+        function bitsToString(bits) {
+            const bytes = [];
+            let currentByte = 0;
+            let bitIdx = 0;
+
+            for (let i = 0; i < bits.size(); ++i) {
+                // Determine which bit position in the byte (MSB first: 7 down to 0)
+                const pos = 7 - (bitIdx % 8);
+                if (bits.get(i)) {
+                    currentByte |= (1 << pos);
+                }
+
+                if (pos === 0) {
+                    bytes.push(currentByte);
+                    currentByte = 0;
+                }
+                bitIdx++;
+            }
+            // Push partial last byte if any (though typically K matches byte boundary or padding)
+            if (bitIdx % 8 !== 0) {
+                bytes.push(currentByte);
             }
 
+            // Decode and trim nulls
+            const u8 = new Uint8Array(bytes);
+            return new TextDecoder().decode(u8).replace(/\0/g, '');
+        }
+
+        // Handlers
+        function runEncodeDecode() {
+            if (!isReady) return log("Wait for WASM load.", "error");
+
+            const cfgName = document.getElementById('configSelect').value;
+            const cfg = CONFIGS[cfgName];
+            const N = (1 << cfg.m) - 1;
+            const t = cfg.t;
+
+            log(`\n--- Starting Cycle [${cfgName.toUpperCase()}] ---`);
+
+            let bch = null;
             try {
-                const text = document.getElementById('inputMsg').value;
-                const N = 1023; // m=10
-                const t = 50; 
-                
-                log(`Initializing BCH(N=${N}, t=${t})...`);
-                const bch = new ModuleInstance.LiteBCH(N, t);
-                const K = bch.get_K();
-                log(`Configured: K=${K} bits`);
-
-                // Convert text to bits (naive helpers for demo)
-                const msgVec = new ModuleInstance.IntVector();
-                // Ensure we fit in K bits. 
-                // For simplicity, just take first K/8 bytes or pad.
-                const maxBytes = Math.floor(K / 8);
-                const utf8 = new TextEncoder().encode(text);
-                
-                // Truncate if too long (just for demo safety)
-                const dataToEnc = utf8.slice(0, maxBytes);
-                
-                // Fill bit vector
-                msgVec.resize(K, 0); 
-                for(let i=0; i<dataToEnc.length; ++i) {
-                    const byte = dataToEnc[i];
-                    for(let b=0; b<8; ++b) {
-                        if((byte >> b) & 1) msgVec.set(i*8 + b, 1);
-                    }
-                }
-
-                log(`Encoding "${new TextDecoder().decode(dataToEnc)}"...`);
-                const encoded = bch.encode(msgVec); // Returns IntVector
-                log(`Encoded size: ${encoded.size()} bits`);
-
-                // Corrupt a few bits
-                log("Injecting 5 bit errors...");
-                encoded.set(0, 1 - encoded.get(0));
-                encoded.set(10, 1 - encoded.get(10));
-                encoded.set(20, 1 - encoded.get(20));
-                encoded.set(30, 1 - encoded.get(30));
-                encoded.set(40, 1 - encoded.get(40));
-
-                log("Decoding...");
-                const decoded = new ModuleInstance.IntVector();
-                // We need to resize decoded vector to K before usage if the C++ side expects it,
-                // but LiteBCH decode resizes it internally usually? 
-                // Checking C++ signature: bool decode(const vector& recv, vector& dec)
-                // std::vector output params usually need to be handled carefully in bind.
-                // Re-reading LiteBCH.cpp: decode clears and resizes `decoded_message`.
-                // Embind might need the object passed in to be valid.
-                
-                const success = bch.decode(encoded, decoded);
-                
-                if(success) {
-                    log("Decode Successful!", 'success');
-                    
-                    // Reconstruct bytes
-                    const resBytes = new Uint8Array(maxBytes);
-                    for(let i=0; i<maxBytes; ++i) {
-                        let bVal = 0;
-                        for(let b=0; b<8; ++b) {
-                            if(decoded.get(i*8 + b)) bVal |= (1<<b);
-                        }
-                        resBytes[i] = bVal;
-                    }
-                    // Trim nulls
-                    const resStr = new TextDecoder().decode(resBytes).replace(/\0/g, '');
-                    log(`Recovered Text: "${resStr}"`);
+                // Construct
+                if (cfg.poly.length > 0) {
+                    const pVec = new Module.IntVector();
+                    for (let x of cfg.poly) pVec.push_back(x);
+                    bch = new Module.LiteBCH(N, t, pVec);
+                    pVec.delete();
                 } else {
-                    log("Decode Failed!", 'error');
+                    bch = new Module.LiteBCH(N, t);
                 }
 
-                // Cleanup
-                msgVec.delete();
-                encoded.delete();
-                decoded.delete();
+                const K = bch.get_K();
+                log(`BCH Initialized: N=${N}, K=${K}, t=${t}`, "check");
+
+                // Prepare Data
+                const inputMsg = document.getElementById('inputMsg').value;
+                const estBytes = Math.floor(K / 8);
+
+                // Truncate logic for verification
+                const encoder = new TextEncoder();
+                const fullBytes = encoder.encode(inputMsg);
+                let activeBytes = fullBytes;
+                if (fullBytes.length > estBytes) {
+                    activeBytes = fullBytes.slice(0, estBytes);
+                }
+                const activeStr = new TextDecoder().decode(activeBytes).replace(/\0/g, '');
+
+                log(`Input: "${inputMsg}"`);
+                if (activeStr !== inputMsg) {
+                    log(`Truncated to ${K} bits: "${activeStr}"`, "info");
+                } else {
+                    log(`Fitting in ${K} bits: Yes`, "info");
+                }
+
+                const msgBits = stringToBits(activeStr, K); // Use truncated string to match bits
+
+                // Encode (Fast)
+                const t0 = performance.now();
+                const codeword = bch.encode_fast(msgBits);
+                const t1 = performance.now();
+                log(`Encoding Complete (${(t1 - t0).toFixed(3)}ms). Codeword Size: ${codeword.size()} bits`);
+
+                // Inject Errors
+                const errCount = parseInt(document.getElementById('errorCount').value) || 0;
+                if (errCount > 0) {
+                    log(`Injecting ${errCount} random errors...`, "info");
+                    const positions = new Set();
+                    while (positions.size < errCount) {
+                        positions.add(Math.floor(Math.random() * N));
+                    }
+
+                    for (let pos of positions) {
+                        codeword.set(pos, 1 - codeword.get(pos));
+                    }
+                }
+
+                // Decode
+                const decodedBits = new Module.IntVector();
+                const t2 = performance.now();
+                const success = bch.decode(codeword, decodedBits);
+                const t3 = performance.now();
+
+                if (success) {
+                    log(`Decode SUCCESS (${(t3 - t2).toFixed(3)}ms)`, "success");
+                    const recovered = bitsToString(decodedBits);
+                    log(`Recovered Message: "${recovered}"`);
+
+                    // Verify against ACTIVE (Truncated) string
+                    if (recovered === activeStr) {
+                        log("Content Verified: Match", "success");
+                    } else {
+                        // Compare raw string
+                        log(`Content Verified: MISMATCH (Expected "${activeStr}")`, "error");
+                    }
+                } else {
+                    log(`Decode FAILED (Detected uncorrectable errors)`, "error");
+                }
+
+                // Clean
+                msgBits.delete();
+                codeword.delete();
+                decodedBits.delete();
                 bch.delete();
 
-            } catch(e) {
-                log(`Error: ${e}`, 'error');
-                console.error(e);
+            } catch (e) {
+                let msg = e;
+                if (Module && typeof Module.getExceptionMessage === 'function') {
+                    try { msg = Module.getExceptionMessage(e); } catch (ex) { }
+                }
+                log(`Exception: ${msg}`, "error");
+                if (bch) bch.delete();
+            }
+        }
+
+        function runHealthCheck() {
+            if (!isReady) return;
+            log("\n--- Running Supertest Health Check ---");
+            // A mini version of supertest to verifying bindings in-browser
+
+            try {
+                // Just test Small configuration
+                const N = 31;
+                const t = 3;
+                log("Testing Small (N=31, t=3)...");
+                const bch = new Module.LiteBCH(N, t);
+                const K = bch.get_K();
+
+                // 1. Verify Encoder Consistency (Bytes vs Legacy)
+                const msg = new Module.IntVector();
+                for (let i = 0; i < K; ++i) msg.push_back(i % 2); // 101010...
+
+                const cwFast = bch.encode_fast(msg);
+                const cwLeg = bch.encode(msg);
+
+                let match = true;
+                if (cwFast.size() !== cwLeg.size()) match = false;
+                for (let i = 0; i < cwFast.size(); ++i) {
+                    if (cwFast.get(i) !== cwLeg.get(i)) match = false;
+                }
+
+                if (match) log("Encoder Consistency: PASS", "success");
+                else log("Encoder Consistency: FAIL", "error");
+
+                // 2. Verify Decode
+                const decoded = new Module.IntVector();
+                bch.decode(cwFast, decoded);
+                let decMatch = true;
+                for (let i = 0; i < K; ++i) if (decoded.get(i) !== msg.get(i)) decMatch = false;
+
+                if (decMatch) log("Decoder Verification: PASS", "success");
+                else log("Decoder Verification: FAIL", "error");
+
+                msg.delete(); cwFast.delete(); cwLeg.delete(); decoded.delete(); bch.delete();
+
+            } catch (e) {
+                log(`Health Check Error: ${e}`, "error");
             }
         }
     </script>
 </body>
+
 </html>
