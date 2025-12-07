@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Standard](https://img.shields.io/badge/C%2B%2B-11-blue.svg)](https://en.cppreference.com/w/cpp/11)
+[![WASM](https://img.shields.io/badge/WASM-Ready-orange.svg)](https://webassembly.org/)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![Correctness](https://img.shields.io/badge/verified-bit%20exact-green.svg)]()
 
@@ -10,8 +11,9 @@
 ## 🚀 Why LiteBCH?
 
 *   **Fast by Default**: Uses **8-bit Parallel Look-Up Tables** (LUT) to achieve ~850 Mbps encoding throughput (19x faster than standard bit-serial implementations).
-*   **Micro Footprint**: The entire library is **~570 lines of code**. Compare that to `aff3ct`'s **200,000+ lines** and dozens of files. It compiles in milliseconds.
-*   **Safe & Portable**: Unlike the Linux Kernel implementation, LiteBCH is **endian-neutral** and **alignment-safe**. It runs on any architecture (x86, ARM, RISC-V, WASM) without crashing on unaligned memory access.
+*   **Micro Footprint**: The entire library is **~570 lines of code**. Compare that to `aff3ct`'s **200,000+ lines**. It compiles in milliseconds.
+*   **Web Ready**: First-class **WebAssembly (WASM)** support. Run high-performance ECC directly in the browser or Node.js with zero alignment crashes.
+*   **Safe & Portable**: Unlike the Linux Kernel implementation, LiteBCH is **endian-neutral** and **alignment-safe**. It runs on any architecture (x86, ARM, RISC-V, WASM).
 *   **Production Verified**: Validated bit-for-bit against `aff3ct` across 10,000+ test vectors.
 *   **Zero Dependencies**: No Boost, no MIPP, no build scripts. Just `#include <litebch/LiteBCH.h>`.
 *   **Flexible**: Supports any codeword size from $N=31$ to $N=32767+$ and **Custom Polynomials**.
@@ -35,11 +37,36 @@ While the Linux Kernel uses 32-bit (Slice-by-4) parallelism, LiteBCH intentional
 
 1.  **Safety**: 32-bit word access requires strict memory alignment. Reading a `uint32_t` from address `0x1001` crashes many ARM/RISC-V CPUs. LiteBCH handles bytes, making it safe everywhere.
 2.  **Portability**: Casting bytes to integers involves Endianness (Byte Order) headaches. 8-bit processing is mathematically identical on Big and Little Endian systems.
-3.  **Cache Efficiency**: Our 8-bit tables fit in **~10KB** L1 Cache. 32-bit tables require **40KB+**, which can cause cache thrashing in embedded real-time systems.
+3.  **WASM Efficiency**: WebAssembly memory is linear byte array. 8-bit alignment is native and optimal, avoiding the overhead of emulating aligned access on non-aligned buffers.
 
 ---
 
-## 📦 Usage
+## 🌐 WebAssembly (WASM) Support
+
+LiteBCH is fully verified for the web. We provide a complete toolchain for compiling to `wasm` with Embind bindings.
+
+### Quick Start (Web)
+
+1.  **Build**:
+    ```bash
+    emcmake cmake -B build_wasm -DLITEBCH_BUILD_WASM=ON
+    cmake --build build_wasm
+    ```
+2.  **Run Demo**:
+    ```bash
+    python3 -m http.server
+    # Visit http://localhost:8000/examples/web_demo.html
+    ```
+
+### In-Browser Verification
+We include `tests/wasm_supertest.js` and an **Interactive Health Check** in the demo that verifies:
+*   **Bit-Exactness**: Matches C++ Legacy output bit-for-bit.
+*   **Memory Safety**: Runs extensive fuzzing without leaks or alignment faults.
+*   **Correctness**: Validates recovery from random bit errors across all standard configurations.
+
+---
+
+## 📦 Usage (C++)
 
 ### 1. Fast Byte-Oriented API (Recommended)
 The fastest way to use LiteBCH. Works directly on your binary data buffers.
@@ -87,38 +114,6 @@ Copy `include/litebch` and `src/LiteBCH.cpp` into your project. That's it.
 add_subdirectory(litebch)
 target_link_libraries(your_app PRIVATE litebch::litebch)
 ```
-
-### Method 3: WebAssembly (WASM)
-You can compile LiteBCH for the web using Emscripten.
-
-```bash
-# Configure with Emscripten
-emcmake cmake -B build-wasm -DLITEBCH_BUILD_WASM=ON
-
-# Build
-cmake --build build_wasm
-
-# Output: build-wasm/litebch.js and build-wasm/litebch.wasm
-```
-
-### 4. Interactive Web Demo (Verified)
-We include a robust browser-based demo in `examples/web_demo.html`.
-- **Features**: Configurable N/t, Error Injection, and **In-Browser Supertest**.
-- **Run**:
-  ```bash
-  python3 -m http.server
-  # Open http://localhost:8000/examples/web_demo.html
-  ```
-
-### 5. WASM Verification Suite
-We don't just compile to WASM; we **verify** it bit-for-bit against the C++ Legacy implementation using `tests/wasm_supertest.js`.
-- **Coverage**: Small ($N=31$) to XX-Large ($N=8191$) + Custom Polynomials.
-- **Checks**:
-    - **Encoder Consistency**: `encode_fast()` (Byte-Wise) == `encode()` (Legacy Bit-Wise).
-    - **Decoder Correctness**: Recovers from $t$ errors.
-    - **Boundary Safety**: Fails gracefuly (or detects mismatch) on $t+1$ errors.
-    - **Regression Safety**: Hardcoded Golden Checksums for every config.
-- **Run**: `node tests/wasm_supertest.js`
 
 ## 🔄 Migration from aff3ct
 
