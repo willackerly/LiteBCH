@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -lembind -sMODULARIZE=1 -sEXPORT_NAME=createLiteBCHModule -sALLOW_MEMORY_GROWTH=1 CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o -o litebch  liblitebch.a

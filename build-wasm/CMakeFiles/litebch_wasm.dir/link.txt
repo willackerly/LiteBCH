@@ -1,0 +1,1 @@
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -O3 -DNDEBUG -lembind -sMODULARIZE=1 -sEXPORT_NAME=createLiteBCHModule -sALLOW_MEMORY_GROWTH=1 @CMakeFiles/litebch_wasm.dir/objects1.rsp -o litebch.js @CMakeFiles/litebch_wasm.dir/linkLibs.rsp

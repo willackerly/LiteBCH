@@ -1,0 +1,14 @@
+build/
+.DS_Store
+.vscode/
+*.o
+*.a
+*.dylib
+tests/supertest
+tests/benchmark
+tests/legacy_compat_test
+tests/unit_tests
+tests/fast_bench
+tests/kernel_bench
+tests/repro_demo_failure
+tests/verify_wasm_cpp_match

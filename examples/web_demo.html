@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LiteBCH WASM Demo</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        textarea { width: 100%; height: 100px; margin-bottom: 1rem; }
+        button { padding: 0.5rem 1rem; cursor: pointer; }
+        .output { background: #f4f4f4; padding: 1rem; border-radius: 4px; font-family: monospace; word-break: break-all; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>LiteBCH WASM Demo</h1>
+    <p>Load <code>litebch.js</code> and run BCH encoding/decoding in the browser.</p>
+    
+    <div>
+        <label>Input Message (Text):</label><br>
+        <textarea id="inputMsg">Hello, WASM World!</textarea>
+        <button onclick="runDemo()">Encode & Decode</button>
+    </div>
+
+    <h3>Log:</h3>
+    <div id="log" class="output">Loading WASM...</div>
+
+    <!-- 
+      Note: You must serve this file and the build-wasm directory via a web server 
+      due to WASM loading restrictions (CORS/MIME types).
+      e.g. python3 -m http.server
+    -->
+    <script src="../build-wasm/litebch.js"></script>
+    <script>
+        let ModuleInstance = null;
+
+        // Initialize Module
+        createLiteBCHModule().then(instance => {
+            ModuleInstance = instance;
+            log("WASM Module Loaded. Ready.");
+        });
+
+        function log(msg, type='') {
+            const el = document.getElementById('log');
+            el.innerHTML += `<div class="${type}">${msg}</div>`;
+        }
+
+        function runDemo() {
+            if (!ModuleInstance) {
+                log("Module not loaded yet.", 'error');
+                return;
+            }
+
+            try {
+                const text = document.getElementById('inputMsg').value;
+                const N = 1023; // m=10
+                const t = 50; 
+                
+                log(`Initializing BCH(N=${N}, t=${t})...`);
+                const bch = new ModuleInstance.LiteBCH(N, t);
+                const K = bch.get_K();
+                log(`Configured: K=${K} bits`);
+
+                // Convert text to bits (naive helpers for demo)
+                const msgVec = new ModuleInstance.IntVector();
+                // Ensure we fit in K bits. 
+                // For simplicity, just take first K/8 bytes or pad.
+                const maxBytes = Math.floor(K / 8);
+                const utf8 = new TextEncoder().encode(text);
+                
+                // Truncate if too long (just for demo safety)
+                const dataToEnc = utf8.slice(0, maxBytes);
+                
+                // Fill bit vector
+                msgVec.resize(K, 0); 
+                for(let i=0; i<dataToEnc.length; ++i) {
+                    const byte = dataToEnc[i];
+                    for(let b=0; b<8; ++b) {
+                        if((byte >> b) & 1) msgVec.set(i*8 + b, 1);
+                    }
+                }
+
+                log(`Encoding "${new TextDecoder().decode(dataToEnc)}"...`);
+                const encoded = bch.encode(msgVec); // Returns IntVector
+                log(`Encoded size: ${encoded.size()} bits`);
+
+                // Corrupt a few bits
+                log("Injecting 5 bit errors...");
+                encoded.set(0, 1 - encoded.get(0));
+                encoded.set(10, 1 - encoded.get(10));
+                encoded.set(20, 1 - encoded.get(20));
+                encoded.set(30, 1 - encoded.get(30));
+                encoded.set(40, 1 - encoded.get(40));
+
+                log("Decoding...");
+                const decoded = new ModuleInstance.IntVector();
+                // We need to resize decoded vector to K before usage if the C++ side expects it,
+                // but LiteBCH decode resizes it internally usually? 
+                // Checking C++ signature: bool decode(const vector& recv, vector& dec)
+                // std::vector output params usually need to be handled carefully in bind.
+                // Re-reading LiteBCH.cpp: decode clears and resizes `decoded_message`.
+                // Embind might need the object passed in to be valid.
+                
+                const success = bch.decode(encoded, decoded);
+                
+                if(success) {
+                    log("Decode Successful!", 'success');
+                    
+                    // Reconstruct bytes
+                    const resBytes = new Uint8Array(maxBytes);
+                    for(let i=0; i<maxBytes; ++i) {
+                        let bVal = 0;
+                        for(let b=0; b<8; ++b) {
+                            if(decoded.get(i*8 + b)) bVal |= (1<<b);
+                        }
+                        resBytes[i] = bVal;
+                    }
+                    // Trim nulls
+                    const resStr = new TextDecoder().decode(resBytes).replace(/\0/g, '');
+                    log(`Recovered Text: "${resStr}"`);
+                } else {
+                    log("Decode Failed!", 'error');
+                }
+
+                // Cleanup
+                msgVec.delete();
+                encoded.delete();
+                decoded.delete();
+                bch.delete();
+
+            } catch(e) {
+                log(`Error: ${e}`, 'error');
+                console.error(e);
+            }
+        }
+    </script>
+</body>
+</html>
