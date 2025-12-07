@@ -39,11 +39,13 @@ public:
   int get_K() const { return K; }
   int get_N() const { return N; }
   int get_t() const { return t; }
+  int get_ecc_bytes() const { return ecc_bytes; }
 
 private:
   int N;
   int K; // N - redundancy
   int t;
+  int ecc_bytes; // Exposed for convenience
 
 protected:
   int m;       // Order of Galois Field (2^m)

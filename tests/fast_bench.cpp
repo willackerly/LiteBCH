@@ -26,7 +26,7 @@ int main() {
     int vectors = 5000;
     int K = bch.get_K();
     int data_bytes = (K + 7) / 8;
-    int ecc_bytes = bch.ecc_bytes;
+    int ecc_bytes = bch.get_ecc_bytes();
 
     // Random Gen
     std::mt19937 gen(1337 + m);
