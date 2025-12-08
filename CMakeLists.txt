@@ -58,6 +58,7 @@ if(LITEBCH_BUILD_WASM)
     endif()
 
     # Create the WASM module
+    set(CPPTRACE_UNWIND_WITH_NOTHING ON CACHE BOOL "" FORCE)
     add_executable(litebch_wasm src/wasm_bindings.cpp)
     
     # Link with the main library
@@ -76,6 +77,8 @@ if(LITEBCH_BUILD_WASM)
         "SHELL:-sALLOW_MEMORY_GROWTH=1"
         "SHELL:-fexceptions"
         "SHELL:-sDISABLE_EXCEPTION_CATCHING=0"
+        "SHELL:-sEXPORTED_FUNCTIONS=['_malloc','_free']"
+        "SHELL:-sEXPORTED_RUNTIME_METHODS=['HEAPU8']"
     )
     
     # Set output name to litebch.js (and litebch.wasm)

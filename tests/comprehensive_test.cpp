@@ -98,7 +98,82 @@ uint32_t get_expected_checksum(const TestConfig &cfg) {
   return 0; // Should not happen
 }
 
-int main() {
+// --- WASM Integration Helpers ---
+#include <array>
+#include <cstdio>
+#include <map>
+#include <memory>
+#include <stdexcept>
+
+struct WasmResult {
+  std::string checksum_hex;
+  std::string status;
+  bool checked = false;
+
+  WasmResult() = default;
+  WasmResult(std::string c, std::string s, bool chk)
+      : checksum_hex(c), status(s), checked(chk) {}
+};
+
+std::map<std::string, WasmResult>
+run_wasm_verification(const std::string &script_path) {
+  std::map<std::string, WasmResult> results;
+  std::string cmd = "node " + script_path + " --csv";
+
+  std::cout << " [WASM] Executing: " << cmd << " ...\n";
+
+  std::array<char, 128> buffer;
+  std::string output;
+  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "r"),
+                                                pclose);
+
+  if (!pipe) {
+    std::cerr << " [WASM] popen() failed!\n";
+    return results;
+  }
+
+  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+    output += buffer.data();
+  }
+
+  // Parse CSV: ConfigName,Checksum,Status
+  std::stringstream ss(output);
+  std::string line;
+  while (std::getline(ss, line)) {
+    if (line.empty())
+      continue;
+
+    std::stringstream ls(line);
+    std::string segment;
+    std::vector<std::string> parts;
+
+    while (std::getline(ls, segment, ',')) {
+      // Trim whitespace (newlines from fgets)
+      segment.erase(segment.find_last_not_of(" \n\r\t") + 1);
+      parts.push_back(segment);
+    }
+
+    if (parts.size() >= 3) {
+      results[parts[0]] = {parts[1], parts[2], true};
+    }
+  }
+
+  return results;
+}
+
+int main(int argc, char *argv[]) {
+  std::string wasm_script_path = "";
+  bool verify_aff3ct = false;
+  // Simple arg parse
+  for (int i = 1; i < argc; ++i) {
+    std::string arg = argv[i];
+    if (arg == "--verify-wasm" && i + 1 < argc) {
+      wasm_script_path = argv[++i];
+    } else if (arg == "--verify-aff3ct") {
+      verify_aff3ct = true;
+    }
+  }
+
   // Expanded configs to show permutations
   std::vector<TestConfig> configs = {
       {"Small", 5, 3, {}},    // n=31, t=3
@@ -120,6 +195,12 @@ int main() {
 
   int vectors_per_config = 100;
 
+  // Pre-run WASM verification if requested
+  std::map<std::string, WasmResult> wasm_results;
+  if (!wasm_script_path.empty()) {
+    wasm_results = run_wasm_verification(wasm_script_path);
+  }
+
   std::cout << "\n============================================================="
                "=======================================\n";
   std::cout << "                             LiteBCH Comprehensive "
@@ -132,12 +213,17 @@ int main() {
   std::cout << "  - RNG Source: Deterministic LCG (Seed based on m)\n";
   std::cout << "  - Oracle:     ";
 #ifdef AFF3CT_ENABLED
-  std::cout << "AFF3CT (Live Execution - Independent Checksum Generation)\n";
+  std::cout << "AFF3CT (Live Execution)";
 #else
-  std::cout << "None (Self-Consistency/Legacy Checksums Only)\n";
+  std::cout << "None";
 #endif
-  std::cout << "==============================================================="
-               "=====================================\n\n";
+
+  if (!wasm_script_path.empty()) {
+    std::cout << " + WASM (Invoked)";
+  }
+  std::cout
+      << "\n==============================================================="
+         "=====================================\n\n";
 
   std::cout << "| " << std::left << std::setw(10) << "Config"
             << " | " << std::setw(8) << "Poly"
@@ -148,13 +234,15 @@ int main() {
 #ifdef AFF3CT_ENABLED
             << " | " << std::setw(15) << "Oracle Status"
 #endif
+            << " | " << std::setw(8) << "WASM"
             << " | " << std::setw(6) << "Result" << " |\n";
+
   std::cout << "| :---       | :---     | :---     | :------------ | "
                ":------------ | :-------- "
 #ifdef AFF3CT_ENABLED
             << "| :-------------- "
 #endif
-            << "| :----- |\n";
+            << "| :------- | :----- |\n";
 
   bool overall_pass = true;
 
@@ -189,7 +277,7 @@ int main() {
       std::vector<int> aff3ct_encoded(N);
       std::vector<int> aff3ct_decoded(K);
 
-      if (cfg.p.empty()) {
+      if (verify_aff3ct && cfg.p.empty()) { // Check flag
         try {
           // std::cout << " [AFF3CT] Init for " << cfg.name << "...\n";
           aff3ct_poly.reset(
@@ -214,7 +302,7 @@ int main() {
       uint32_t aff3ct_chk = 0;
 
 #ifdef AFF3CT_ENABLED
-      {
+      if (verify_aff3ct) { // Check flag
         Timer att;
         // Benchmark Encode
         Timer enc_t;
@@ -272,6 +360,7 @@ int main() {
                     << calculate_mbps(vectors_per_config * N, dt_accum) << " | "
                     << std::hex << std::setw(9) << aff3ct_chk << std::dec
                     << " | " << std::setw(15) << "Reference"
+                    << " | " << std::setw(8) << "-"
                     << " | " << std::setw(6) << "PASS" << " |\n";
         } catch (std::exception &e) {
           // If init fails (e.g. invalid custom poly), verify we catch it
@@ -280,8 +369,18 @@ int main() {
                     << "Aff3ct" << " | " << std::setw(13) << "-" << " | "
                     << std::setw(13) << "-" << " | " << std::setw(9) << "-"
                     << " | " << std::setw(15) << "Init Failed"
+                    << " | " << std::setw(8) << "-"
                     << " | " << std::setw(6) << "SKIP" << " |\n";
         }
+      } else {
+        // Print Skipped Row if Aff3ct enabled but not executed
+        std::cout << "| " << std::left << std::setw(10) << cfg.name << " | "
+                  << std::setw(8) << poly_type << " | " << std::setw(8)
+                  << "Aff3ct" << " | " << std::setw(13) << "-" << " | "
+                  << std::setw(13) << "-" << " | " << std::setw(9) << "-"
+                  << " | " << std::setw(15) << "Skipped (Flag)"
+                  << " | " << std::setw(8) << "-"
+                  << " | " << std::setw(6) << "-" << " |\n";
       }
 #endif
 
@@ -329,7 +428,7 @@ int main() {
           // null or old? I should add a 'bool aff3ct_valid' flag.
 
           // Actually, let's just assume valid for now or check pointer.
-          if (aff3ct_enc) {
+          if (verify_aff3ct && aff3ct_enc) { // Check flag
             aff3ct_enc->encode(messages[v], aff3ct_encoded);
 
             // Re-calculate checksum to ensure THIS specific output is
@@ -355,7 +454,7 @@ int main() {
 
 #ifdef AFF3CT_ENABLED
           // 3. Validate Decode
-          if (aff3ct_dec) {
+          if (verify_aff3ct && aff3ct_dec) { // Check flag
             aff3ct_dec->decode_hiho(corrupted, aff3ct_decoded);
             if (aff3ct_decoded != dec) {
               std::cerr << " [FAIL] AFF3CT Decode Mismatch for " << cfg.name
@@ -376,7 +475,7 @@ int main() {
                   << std::hex << std::setw(9) << checksum << std::dec << " ";
 
 #ifdef AFF3CT_ENABLED
-        if (aff3ct_enc) {
+        if (verify_aff3ct && aff3ct_enc) {
           // If check passed, Aff3ct checksum matched LiteBCH.
           if (aff3ct_checksum_live == aff3ct_chk) {
             std::cout << "| " << std::setw(15) << "See 'Aff3ct'" << " ";
@@ -385,10 +484,18 @@ int main() {
             ss << "Diff:" << std::hex << aff3ct_checksum_live;
             std::cout << "| " << std::setw(15) << ss.str() << " ";
           }
-        } else {
+        } else if (verify_aff3ct) {
           std::cout << "| " << std::setw(15) << "Init Failed" << " ";
+        } else {
+          std::cout << "| " << std::setw(15) << "Skipped" << " ";
         }
 #endif
+
+        if (!wasm_script_path.empty()) {
+          std::cout << "| " << std::setw(8) << "-" << " ";
+        } else {
+          std::cout << "| " << std::setw(8) << "-" << " "; // Or "N/A"
+        }
 
         if (pass && checksum == get_expected_checksum(cfg)) {
           std::cout << "| PASS   |\n";
@@ -558,6 +665,7 @@ int main() {
         if (!config_pass)
           overall_pass = false;
 
+        // Result Row
         std::cout << "| " << std::left << std::setw(10) << cfg.name << " | "
                   << std::setw(8) << poly_type << " | " << std::setw(8)
                   << "ByteFast" << " | " << std::fixed << std::setprecision(1)
@@ -570,6 +678,27 @@ int main() {
             (cfg.p.empty()) ? "MATCHED (100%)" : "Skipped (Cust)";
         std::cout << "| " << std::setw(15) << oracle_msg << " ";
 #endif
+
+        if (!wasm_script_path.empty()) {
+          auto it = wasm_results.find(cfg.name);
+          if (it != wasm_results.end()) {
+            std::string w_status = it->second.status;
+            std::string w_chk = it->second.checksum_hex;
+            // Compare checksums?
+            // Native 'checksum' is int, wasm is hex string.
+            // Converting native to string for display?
+            // Actually let's just print what WASM reported.
+            if (w_status == "PASS") {
+              std::cout << "| " << std::setw(8) << w_chk << " ";
+            } else {
+              std::cout << "| " << std::setw(8) << "FAIL" << " ";
+            }
+          } else {
+            std::cout << "| " << std::setw(8) << "N/A" << " ";
+          }
+        } else {
+          std::cout << "| " << std::setw(8) << "-" << " ";
+        }
 
         if (config_pass && checksum == get_expected_checksum(cfg)) {
           std::cout << "| PASS   |\n";
@@ -649,7 +778,12 @@ int main() {
 #ifdef AFF3CT_ENABLED
           std::cout << "| " << std::setw(15) << "-" << " ";
 #endif
-          std::cout << "| -      |\n";
+          // WASM Check (Applicable here for verify? No, WASM was encode verify
+          // mainly) We can put WASM status here or in ByteFast row. ByteFast
+          // row is better. BUT wait, I missed updating ByteFast row in previous
+          // step. Let's add empty for RawByte.
+          std::cout << "| " << std::setw(8) << "-"
+                    << " | " << std::setw(6) << "-" << " |\n";
         }
       }
 

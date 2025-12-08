@@ -59,15 +59,17 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
   -
     kind: "message-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:207 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Darwin - 24.6.0 - arm64
+      The target system is: Emscripten - 1 - x86
+      The host system is: Darwin - 24.6.0 - arm64
   -
     kind: "find-v1"
     backtrace:
@@ -103,6 +105,8 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
       - "/Users/will/.antigravity/antigravity/bin/gmake"
       - "/Users/will/google-cloud-sdk/bin/gmake"
@@ -124,287 +128,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-  -
-    kind: "find-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake:73 (find_program)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:64 (_cmake_find_compiler)"
-      - "CMakeLists.txt:2 (project)"
-    mode: "program"
-    variable: "CMAKE_C_COMPILER"
-    description: "C compiler"
-    settings:
-      SearchFramework: "FIRST"
-      SearchAppBundle: "FIRST"
-      CMAKE_FIND_USE_CMAKE_PATH: true
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "cc"
-      - "gcc"
-      - "cl"
-      - "bcc"
-      - "xlc"
-      - "icx"
-      - "clang"
-    candidate_directories:
-      - "/Users/will/.antigravity/antigravity/bin/"
-      - "/Users/will/google-cloud-sdk/bin/"
-      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
-      - "/opt/homebrew/bin/"
-      - "/opt/homebrew/sbin/"
-      - "/usr/local/bin/"
-      - "/System/Cryptexes/App/usr/bin/"
-      - "/usr/bin/"
-      - "/bin/"
-      - "/usr/sbin/"
-      - "/sbin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
-    searched_directories:
-      - "/Users/will/.antigravity/antigravity/bin/cc"
-      - "/Users/will/google-cloud-sdk/bin/cc"
-      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/cc"
-      - "/opt/homebrew/bin/cc"
-      - "/opt/homebrew/sbin/cc"
-      - "/usr/local/bin/cc"
-      - "/System/Cryptexes/App/usr/bin/cc"
-    found: "/usr/bin/cc"
-    search_context:
-      ENV{PATH}:
         - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-        - "/opt/homebrew/bin"
-        - "/opt/homebrew/sbin"
-        - "/usr/local/bin"
-        - "/System/Cryptexes/App/usr/bin"
-        - "/usr/bin"
-        - "/bin"
-        - "/usr/sbin"
-        - "/sbin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-  -
-    kind: "find-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
-    mode: "file"
-    variable: "src_in"
-    description: "Path to a file."
-    settings:
-      SearchFramework: "FIRST"
-      SearchAppBundle: "FIRST"
-      CMAKE_FIND_USE_CMAKE_PATH: true
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "CMakeCCompilerId.c.in"
-    candidate_directories:
-      - "/opt/homebrew/share/cmake/Modules/"
-    found: "/opt/homebrew/share/cmake/Modules/CMakeCCompilerId.c.in"
-    search_context:
-      ENV{PATH}:
-        - "/Users/will/.antigravity/antigravity/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-        - "/opt/homebrew/bin"
-        - "/opt/homebrew/sbin"
-        - "/usr/local/bin"
-        - "/System/Cryptexes/App/usr/bin"
-        - "/usr/bin"
-        - "/bin"
-        - "/usr/sbin"
-        - "/sbin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-      Compiler: /usr/bin/cc 
-      Build flags: 
-      Id flags:  
-      
-      The output was:
-      0
-      
-      
-      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
-      
-      The C compiler identification is AppleClang, found in:
-        /Users/will/dev/BCHLight/build_wasm/CMakeFiles/4.2.0/CompilerIdC/a.out
-      
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:290 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Detecting C compiler apple sysroot: "/usr/bin/cc" "-E" "apple-sdk.c"
-        # 1 "apple-sdk.c"
-        # 1 "<built-in>" 1
-        # 1 "<built-in>" 3
-        # 465 "<built-in>" 3
-        # 1 "<command line>" 1
-        # 1 "<built-in>" 2
-        # 1 "apple-sdk.c" 2
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 1 3 4
-        # 89 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-        # 90 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h" 1 3 4
-        # 91 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
-        # 207 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
-        # 196 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-        # 197 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
-        # 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-        # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
-        # 198 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
-        # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
-        # 35 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 2 3 4
-        # 199 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-        # 208 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
-        # 2 "apple-sdk.c" 2
-        
-        
-      Found apple sysroot: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
-  -
-    kind: "find-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:2 (project)"
-    mode: "program"
-    variable: "CMAKE_AR"
-    description: "Path to a program."
-    settings:
-      SearchFramework: "FIRST"
-      SearchAppBundle: "FIRST"
-      CMAKE_FIND_USE_CMAKE_PATH: false
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "ar"
-    candidate_directories:
-      - "/usr/bin/"
-      - "/Users/will/.antigravity/antigravity/bin/"
-      - "/Users/will/google-cloud-sdk/bin/"
-      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
-      - "/opt/homebrew/bin/"
-      - "/opt/homebrew/sbin/"
-      - "/usr/local/bin/"
-      - "/System/Cryptexes/App/usr/bin/"
-      - "/bin/"
-      - "/usr/sbin/"
-      - "/sbin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
-    found: "/usr/bin/ar"
-    search_context:
-      ENV{PATH}:
-        - "/Users/will/.antigravity/antigravity/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-        - "/opt/homebrew/bin"
-        - "/opt/homebrew/sbin"
-        - "/usr/local/bin"
-        - "/System/Cryptexes/App/usr/bin"
-        - "/usr/bin"
-        - "/bin"
-        - "/usr/sbin"
-        - "/sbin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-  -
-    kind: "find-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:2 (project)"
-    mode: "program"
-    variable: "CMAKE_RANLIB"
-    description: "Path to a program."
-    settings:
-      SearchFramework: "FIRST"
-      SearchAppBundle: "FIRST"
-      CMAKE_FIND_USE_CMAKE_PATH: false
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "ranlib"
-    candidate_directories:
-      - "/usr/bin/"
-      - "/Users/will/.antigravity/antigravity/bin/"
-      - "/Users/will/google-cloud-sdk/bin/"
-      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
-      - "/opt/homebrew/bin/"
-      - "/opt/homebrew/sbin/"
-      - "/usr/local/bin/"
-      - "/System/Cryptexes/App/usr/bin/"
-      - "/bin/"
-      - "/usr/sbin/"
-      - "/sbin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
-    found: "/usr/bin/ranlib"
-    search_context:
-      ENV{PATH}:
-        - "/Users/will/.antigravity/antigravity/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-        - "/opt/homebrew/bin"
-        - "/opt/homebrew/sbin"
-        - "/usr/local/bin"
-        - "/System/Cryptexes/App/usr/bin"
-        - "/usr/bin"
-        - "/bin"
-        - "/usr/sbin"
-        - "/sbin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -423,9 +153,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "llvm-strip"
       - "strip"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -433,12 +164,41 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm-strip"
+      - "/Users/will/.antigravity/antigravity/bin/llvm-strip"
+      - "/Users/will/google-cloud-sdk/bin/llvm-strip"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/llvm-strip"
+      - "/opt/homebrew/bin/llvm-strip"
+      - "/opt/homebrew/sbin/llvm-strip"
+      - "/usr/local/bin/llvm-strip"
+      - "/System/Cryptexes/App/usr/bin/llvm-strip"
+      - "/usr/bin/llvm-strip"
+      - "/bin/llvm-strip"
+      - "/usr/sbin/llvm-strip"
+      - "/sbin/llvm-strip"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/llvm-strip"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/llvm-strip"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/llvm-strip"
+      - "/bin/llvm-strip"
+      - "/sbin/llvm-strip"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/strip"
+      - "/Users/will/.antigravity/antigravity/bin/strip"
+      - "/Users/will/google-cloud-sdk/bin/strip"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/strip"
+      - "/opt/homebrew/bin/strip"
+      - "/opt/homebrew/sbin/strip"
+      - "/usr/local/bin/strip"
+      - "/System/Cryptexes/App/usr/bin/strip"
     found: "/usr/bin/strip"
     search_context:
       ENV{PATH}:
@@ -456,8 +216,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -476,9 +241,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "ld.lld"
       - "ld"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -486,12 +252,41 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/ld.lld"
+      - "/Users/will/.antigravity/antigravity/bin/ld.lld"
+      - "/Users/will/google-cloud-sdk/bin/ld.lld"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/ld.lld"
+      - "/opt/homebrew/bin/ld.lld"
+      - "/opt/homebrew/sbin/ld.lld"
+      - "/usr/local/bin/ld.lld"
+      - "/System/Cryptexes/App/usr/bin/ld.lld"
+      - "/usr/bin/ld.lld"
+      - "/bin/ld.lld"
+      - "/usr/sbin/ld.lld"
+      - "/sbin/ld.lld"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/ld.lld"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/ld.lld"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/ld.lld"
+      - "/bin/ld.lld"
+      - "/sbin/ld.lld"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/ld"
+      - "/Users/will/.antigravity/antigravity/bin/ld"
+      - "/Users/will/google-cloud-sdk/bin/ld"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/ld"
+      - "/opt/homebrew/bin/ld"
+      - "/opt/homebrew/sbin/ld"
+      - "/usr/local/bin/ld"
+      - "/System/Cryptexes/App/usr/bin/ld"
     found: "/usr/bin/ld"
     search_context:
       ENV{PATH}:
@@ -509,61 +304,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-  -
-    kind: "find-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:2 (project)"
-    mode: "program"
-    variable: "CMAKE_NM"
-    description: "Path to a program."
-    settings:
-      SearchFramework: "FIRST"
-      SearchAppBundle: "FIRST"
-      CMAKE_FIND_USE_CMAKE_PATH: false
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
-      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
-      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
-      CMAKE_FIND_USE_INSTALL_PREFIX: true
-    names:
-      - "nm"
-    candidate_directories:
-      - "/usr/bin/"
-      - "/Users/will/.antigravity/antigravity/bin/"
-      - "/Users/will/google-cloud-sdk/bin/"
-      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
-      - "/opt/homebrew/bin/"
-      - "/opt/homebrew/sbin/"
-      - "/usr/local/bin/"
-      - "/System/Cryptexes/App/usr/bin/"
-      - "/bin/"
-      - "/usr/sbin/"
-      - "/sbin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
-    found: "/usr/bin/nm"
-    search_context:
-      ENV{PATH}:
         - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-        - "/opt/homebrew/bin"
-        - "/opt/homebrew/sbin"
-        - "/usr/local/bin"
-        - "/System/Cryptexes/App/usr/bin"
-        - "/usr/bin"
-        - "/bin"
-        - "/usr/sbin"
-        - "/sbin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
-        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
-        - "/Users/will/google-cloud-sdk/bin"
-        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -582,9 +329,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "llvm-objdump"
       - "objdump"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -592,12 +340,41 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm-objdump"
+      - "/Users/will/.antigravity/antigravity/bin/llvm-objdump"
+      - "/Users/will/google-cloud-sdk/bin/llvm-objdump"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/llvm-objdump"
+      - "/opt/homebrew/bin/llvm-objdump"
+      - "/opt/homebrew/sbin/llvm-objdump"
+      - "/usr/local/bin/llvm-objdump"
+      - "/System/Cryptexes/App/usr/bin/llvm-objdump"
+      - "/usr/bin/llvm-objdump"
+      - "/bin/llvm-objdump"
+      - "/usr/sbin/llvm-objdump"
+      - "/sbin/llvm-objdump"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/llvm-objdump"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/llvm-objdump"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/llvm-objdump"
+      - "/bin/llvm-objdump"
+      - "/sbin/llvm-objdump"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/objdump"
+      - "/Users/will/.antigravity/antigravity/bin/objdump"
+      - "/Users/will/google-cloud-sdk/bin/objdump"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/objdump"
+      - "/opt/homebrew/bin/objdump"
+      - "/opt/homebrew/sbin/objdump"
+      - "/usr/local/bin/objdump"
+      - "/System/Cryptexes/App/usr/bin/objdump"
     found: "/usr/bin/objdump"
     search_context:
       ENV{PATH}:
@@ -615,8 +392,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -635,9 +417,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "llvm-objcopy"
       - "objcopy"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -645,14 +428,34 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
-      - "/usr/bin/objcopy"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm-objcopy"
+      - "/Users/will/.antigravity/antigravity/bin/llvm-objcopy"
+      - "/Users/will/google-cloud-sdk/bin/llvm-objcopy"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/llvm-objcopy"
+      - "/opt/homebrew/bin/llvm-objcopy"
+      - "/opt/homebrew/sbin/llvm-objcopy"
+      - "/usr/local/bin/llvm-objcopy"
+      - "/System/Cryptexes/App/usr/bin/llvm-objcopy"
+      - "/usr/bin/llvm-objcopy"
+      - "/bin/llvm-objcopy"
+      - "/usr/sbin/llvm-objcopy"
+      - "/sbin/llvm-objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/llvm-objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/llvm-objcopy"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/llvm-objcopy"
+      - "/bin/llvm-objcopy"
+      - "/sbin/llvm-objcopy"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/objcopy"
       - "/Users/will/.antigravity/antigravity/bin/objcopy"
       - "/Users/will/google-cloud-sdk/bin/objcopy"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/objcopy"
@@ -660,12 +463,15 @@ events:
       - "/opt/homebrew/sbin/objcopy"
       - "/usr/local/bin/objcopy"
       - "/System/Cryptexes/App/usr/bin/objcopy"
+      - "/usr/bin/objcopy"
       - "/bin/objcopy"
       - "/usr/sbin/objcopy"
       - "/sbin/objcopy"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/objcopy"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/objcopy"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/objcopy"
+      - "/bin/objcopy"
+      - "/sbin/objcopy"
     found: false
     search_context:
       ENV{PATH}:
@@ -683,8 +489,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -703,9 +514,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "llvm-readelf"
       - "readelf"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -713,14 +525,34 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
-      - "/usr/bin/readelf"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm-readelf"
+      - "/Users/will/.antigravity/antigravity/bin/llvm-readelf"
+      - "/Users/will/google-cloud-sdk/bin/llvm-readelf"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/llvm-readelf"
+      - "/opt/homebrew/bin/llvm-readelf"
+      - "/opt/homebrew/sbin/llvm-readelf"
+      - "/usr/local/bin/llvm-readelf"
+      - "/System/Cryptexes/App/usr/bin/llvm-readelf"
+      - "/usr/bin/llvm-readelf"
+      - "/bin/llvm-readelf"
+      - "/usr/sbin/llvm-readelf"
+      - "/sbin/llvm-readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/llvm-readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/llvm-readelf"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/llvm-readelf"
+      - "/bin/llvm-readelf"
+      - "/sbin/llvm-readelf"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/readelf"
       - "/Users/will/.antigravity/antigravity/bin/readelf"
       - "/Users/will/google-cloud-sdk/bin/readelf"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/readelf"
@@ -728,12 +560,15 @@ events:
       - "/opt/homebrew/sbin/readelf"
       - "/usr/local/bin/readelf"
       - "/System/Cryptexes/App/usr/bin/readelf"
+      - "/usr/bin/readelf"
       - "/bin/readelf"
       - "/usr/sbin/readelf"
       - "/sbin/readelf"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/readelf"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/readelf"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/readelf"
+      - "/bin/readelf"
+      - "/sbin/readelf"
     found: false
     search_context:
       ENV{PATH}:
@@ -751,8 +586,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -771,9 +611,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "llvm-dlltool"
       - "dlltool"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -781,14 +622,34 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
-      - "/usr/bin/dlltool"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm-dlltool"
+      - "/Users/will/.antigravity/antigravity/bin/llvm-dlltool"
+      - "/Users/will/google-cloud-sdk/bin/llvm-dlltool"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/llvm-dlltool"
+      - "/opt/homebrew/bin/llvm-dlltool"
+      - "/opt/homebrew/sbin/llvm-dlltool"
+      - "/usr/local/bin/llvm-dlltool"
+      - "/System/Cryptexes/App/usr/bin/llvm-dlltool"
+      - "/usr/bin/llvm-dlltool"
+      - "/bin/llvm-dlltool"
+      - "/usr/sbin/llvm-dlltool"
+      - "/sbin/llvm-dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/llvm-dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/llvm-dlltool"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/llvm-dlltool"
+      - "/bin/llvm-dlltool"
+      - "/sbin/llvm-dlltool"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/dlltool"
       - "/Users/will/.antigravity/antigravity/bin/dlltool"
       - "/Users/will/google-cloud-sdk/bin/dlltool"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/dlltool"
@@ -796,12 +657,15 @@ events:
       - "/opt/homebrew/sbin/dlltool"
       - "/usr/local/bin/dlltool"
       - "/System/Cryptexes/App/usr/bin/dlltool"
+      - "/usr/bin/dlltool"
       - "/bin/dlltool"
       - "/usr/sbin/dlltool"
       - "/sbin/dlltool"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/dlltool"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/dlltool"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/dlltool"
+      - "/bin/dlltool"
+      - "/sbin/dlltool"
     found: false
     search_context:
       ENV{PATH}:
@@ -819,8 +683,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -839,9 +708,10 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
+      - "llvm-addr2line"
       - "addr2line"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -849,14 +719,34 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
-      - "/usr/bin/addr2line"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm-addr2line"
+      - "/Users/will/.antigravity/antigravity/bin/llvm-addr2line"
+      - "/Users/will/google-cloud-sdk/bin/llvm-addr2line"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/llvm-addr2line"
+      - "/opt/homebrew/bin/llvm-addr2line"
+      - "/opt/homebrew/sbin/llvm-addr2line"
+      - "/usr/local/bin/llvm-addr2line"
+      - "/System/Cryptexes/App/usr/bin/llvm-addr2line"
+      - "/usr/bin/llvm-addr2line"
+      - "/bin/llvm-addr2line"
+      - "/usr/sbin/llvm-addr2line"
+      - "/sbin/llvm-addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/llvm-addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/llvm-addr2line"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/llvm-addr2line"
+      - "/bin/llvm-addr2line"
+      - "/sbin/llvm-addr2line"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/addr2line"
       - "/Users/will/.antigravity/antigravity/bin/addr2line"
       - "/Users/will/google-cloud-sdk/bin/addr2line"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/addr2line"
@@ -864,12 +754,15 @@ events:
       - "/opt/homebrew/sbin/addr2line"
       - "/usr/local/bin/addr2line"
       - "/System/Cryptexes/App/usr/bin/addr2line"
+      - "/usr/bin/addr2line"
       - "/bin/addr2line"
       - "/usr/sbin/addr2line"
       - "/sbin/addr2line"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/addr2line"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/addr2line"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/addr2line"
+      - "/bin/addr2line"
+      - "/sbin/addr2line"
     found: false
     search_context:
       ENV{PATH}:
@@ -887,8 +780,13 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
@@ -909,7 +807,7 @@ events:
     names:
       - "tapi"
     candidate_directories:
-      - "/usr/bin/"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
@@ -917,14 +815,17 @@ events:
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
       - "/bin/"
       - "/usr/sbin/"
       - "/sbin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
-      - "/usr/bin/tapi"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/tapi"
       - "/Users/will/.antigravity/antigravity/bin/tapi"
       - "/Users/will/google-cloud-sdk/bin/tapi"
       - "/Library/Frameworks/Python.framework/Versions/3.12/bin/tapi"
@@ -932,12 +833,15 @@ events:
       - "/opt/homebrew/sbin/tapi"
       - "/usr/local/bin/tapi"
       - "/System/Cryptexes/App/usr/bin/tapi"
+      - "/usr/bin/tapi"
       - "/bin/tapi"
       - "/usr/sbin/tapi"
       - "/sbin/tapi"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/tapi"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/tapi"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/tapi"
+      - "/bin/tapi"
+      - "/sbin/tapi"
     found: false
     search_context:
       ENV{PATH}:
@@ -955,36 +859,123 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "/opt/homebrew/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
-    variable: "CMAKE_CXX_COMPILER"
-    description: "CXX compiler"
+    variable: "CMAKE_C_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
     settings:
       SearchFramework: "FIRST"
       SearchAppBundle: "FIRST"
-      CMAKE_FIND_USE_CMAKE_PATH: true
-      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
       CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
-      - "c++"
-      - "g++"
-      - "cl"
-      - "bcc"
-      - "icpx"
-      - "icx"
-      - "clang++"
+      - "clang-scan-deps-22.0"
+      - "clang-scan-deps-22"
+      - "clang-scan-deps22"
+      - "clang-scan-deps"
     candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/"
+      - "/Users/will/.antigravity/antigravity/bin/"
+      - "/Users/will/google-cloud-sdk/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
+      - "/opt/homebrew/bin/"
+      - "/opt/homebrew/sbin/"
+      - "/usr/local/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
-    found: "/usr/bin/c++"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/clang-scan-deps-22.0"
+      - "/Users/will/.antigravity/antigravity/bin/clang-scan-deps-22.0"
+      - "/Users/will/google-cloud-sdk/bin/clang-scan-deps-22.0"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/clang-scan-deps-22.0"
+      - "/opt/homebrew/bin/clang-scan-deps-22.0"
+      - "/opt/homebrew/sbin/clang-scan-deps-22.0"
+      - "/usr/local/bin/clang-scan-deps-22.0"
+      - "/System/Cryptexes/App/usr/bin/clang-scan-deps-22.0"
+      - "/usr/bin/clang-scan-deps-22.0"
+      - "/bin/clang-scan-deps-22.0"
+      - "/usr/sbin/clang-scan-deps-22.0"
+      - "/sbin/clang-scan-deps-22.0"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/clang-scan-deps-22.0"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/clang-scan-deps-22.0"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/clang-scan-deps-22.0"
+      - "/bin/clang-scan-deps-22.0"
+      - "/sbin/clang-scan-deps-22.0"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/clang-scan-deps-22"
+      - "/Users/will/.antigravity/antigravity/bin/clang-scan-deps-22"
+      - "/Users/will/google-cloud-sdk/bin/clang-scan-deps-22"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/clang-scan-deps-22"
+      - "/opt/homebrew/bin/clang-scan-deps-22"
+      - "/opt/homebrew/sbin/clang-scan-deps-22"
+      - "/usr/local/bin/clang-scan-deps-22"
+      - "/System/Cryptexes/App/usr/bin/clang-scan-deps-22"
+      - "/usr/bin/clang-scan-deps-22"
+      - "/bin/clang-scan-deps-22"
+      - "/usr/sbin/clang-scan-deps-22"
+      - "/sbin/clang-scan-deps-22"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/clang-scan-deps-22"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/clang-scan-deps-22"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/clang-scan-deps-22"
+      - "/bin/clang-scan-deps-22"
+      - "/sbin/clang-scan-deps-22"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/clang-scan-deps22"
+      - "/Users/will/.antigravity/antigravity/bin/clang-scan-deps22"
+      - "/Users/will/google-cloud-sdk/bin/clang-scan-deps22"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/clang-scan-deps22"
+      - "/opt/homebrew/bin/clang-scan-deps22"
+      - "/opt/homebrew/sbin/clang-scan-deps22"
+      - "/usr/local/bin/clang-scan-deps22"
+      - "/System/Cryptexes/App/usr/bin/clang-scan-deps22"
+      - "/usr/bin/clang-scan-deps22"
+      - "/bin/clang-scan-deps22"
+      - "/usr/sbin/clang-scan-deps22"
+      - "/sbin/clang-scan-deps22"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/clang-scan-deps22"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/clang-scan-deps22"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/clang-scan-deps22"
+      - "/bin/clang-scan-deps22"
+      - "/sbin/clang-scan-deps22"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/clang-scan-deps"
+      - "/Users/will/.antigravity/antigravity/bin/clang-scan-deps"
+      - "/Users/will/google-cloud-sdk/bin/clang-scan-deps"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/clang-scan-deps"
+      - "/opt/homebrew/bin/clang-scan-deps"
+      - "/opt/homebrew/sbin/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+      - "/System/Cryptexes/App/usr/bin/clang-scan-deps"
+      - "/usr/bin/clang-scan-deps"
+      - "/bin/clang-scan-deps"
+      - "/usr/sbin/clang-scan-deps"
+      - "/sbin/clang-scan-deps"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/clang-scan-deps"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/clang-scan-deps"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/clang-scan-deps"
+      - "/bin/clang-scan-deps"
+      - "/sbin/clang-scan-deps"
+    found: false
     search_context:
       ENV{PATH}:
         - "/Users/will/.antigravity/antigravity/bin"
@@ -1001,19 +992,21 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "find-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
       - "CMakeLists.txt:2 (project)"
     mode: "file"
-    variable: "src_in"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
     description: "Path to a file."
     settings:
       SearchFramework: "FIRST"
@@ -1024,10 +1017,12 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
-      - "CMakeCXXCompilerId.cpp.in"
+      - "Platform/Emscripten.cmake"
     candidate_directories:
-      - "/opt/homebrew/share/cmake/Modules/"
-    found: "/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
     search_context:
       ENV{PATH}:
         - "/Users/will/.antigravity/antigravity/bin"
@@ -1044,80 +1039,27 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-      Compiler: /usr/bin/c++ 
-      Build flags: 
-      Id flags:  
-      
-      The output was:
-      0
-      
-      
-      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
-      
-      The CXX compiler identification is AppleClang, found in:
-        /Users/will/dev/BCHLight/build_wasm/CMakeFiles/4.2.0/CompilerIdCXX/a.out
-      
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:290 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Detecting CXX compiler apple sysroot: "/usr/bin/c++" "-E" "apple-sdk.cpp"
-        # 1 "apple-sdk.cpp"
-        # 1 "<built-in>" 1
-        # 1 "<built-in>" 3
-        # 513 "<built-in>" 3
-        # 1 "<command line>" 1
-        # 1 "<built-in>" 2
-        # 1 "apple-sdk.cpp" 2
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 1 3 4
-        # 89 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-        # 90 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h" 1 3 4
-        # 91 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
-        # 207 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 1 3 4
-        # 196 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-        # 197 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
-        # 33 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h" 1 3 4
-        # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 2 3 4
-        # 198 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 1 3 4
-        # 34 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 3 4
-        # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h" 1 3 4
-        # 35 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h" 2 3 4
-        # 199 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h" 2 3 4
-        # 208 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h" 2 3 4
-        # 2 "apple-sdk.cpp" 2
-        
-        
-      Found apple sysroot: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
   -
     kind: "find-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake:76 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
       - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
       - "CMakeLists.txt:2 (project)"
-    mode: "program"
-    variable: "CMAKE_INSTALL_NAME_TOOL"
-    description: "Path to a program."
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
     settings:
       SearchFramework: "FIRST"
       SearchAppBundle: "FIRST"
@@ -1127,7 +1069,211 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
-      - "install_name_tool"
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/FindGit.cmake:111 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/FetchContent.cmake:1884 (find_package)"
+      - "/opt/homebrew/share/cmake/Modules/FetchContent.cmake:1619 (__FetchContent_populateSubbuild)"
+      - "/opt/homebrew/share/cmake/Modules/FetchContent.cmake:2155:EVAL:2 (__FetchContent_doPopulation)"
+      - "/opt/homebrew/share/cmake/Modules/FetchContent.cmake:2155 (cmake_language)"
+      - "/opt/homebrew/share/cmake/Modules/FetchContent.cmake:2394 (__FetchContent_Populate)"
+      - "tests/CMakeLists.txt:72 (FetchContent_MakeAvailable)"
+    mode: "program"
+    variable: "GIT_EXECUTABLE"
+    description: "Git command line client"
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "git"
     candidate_directories:
       - "/Users/will/.antigravity/antigravity/bin/"
       - "/Users/will/google-cloud-sdk/bin/"
@@ -1143,15 +1289,17 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/bin/"
+      - "/sbin/"
     searched_directories:
-      - "/Users/will/.antigravity/antigravity/bin/install_name_tool"
-      - "/Users/will/google-cloud-sdk/bin/install_name_tool"
-      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/install_name_tool"
-      - "/opt/homebrew/bin/install_name_tool"
-      - "/opt/homebrew/sbin/install_name_tool"
-      - "/usr/local/bin/install_name_tool"
-      - "/System/Cryptexes/App/usr/bin/install_name_tool"
-    found: "/usr/bin/install_name_tool"
+      - "/Users/will/.antigravity/antigravity/bin/git"
+      - "/Users/will/google-cloud-sdk/bin/git"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/git"
+      - "/opt/homebrew/bin/git"
+      - "/opt/homebrew/sbin/git"
+      - "/usr/local/bin/git"
+      - "/System/Cryptexes/App/usr/bin/git"
+    found: "/usr/bin/git"
     search_context:
       ENV{PATH}:
         - "/Users/will/.antigravity/antigravity/bin"
@@ -1168,393 +1316,599 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
         - "/Users/will/google-cloud-sdk/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
-      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
   -
     kind: "try_compile-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    checks:
-      - "Detecting C compiler ABI info"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckLinkerFlag.cmake:34 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckPIESupported.cmake:177 (cmake_check_linker_flag)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/CMakeLists.txt:134 (check_pie_supported)"
     directories:
-      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK"
-      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK"
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cEKi65"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cEKi65"
     cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
       CMAKE_C_FLAGS: ""
-      CMAKE_C_FLAGS_DEBUG: "-g"
       CMAKE_EXE_LINKER_FLAGS: ""
-      CMAKE_OSX_ARCHITECTURES: ""
-      CMAKE_OSX_DEPLOYMENT_TARGET: ""
-      CMAKE_OSX_SYSROOT: "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
     buildResult:
-      variable: "CMAKE_C_ABI_COMPILED"
+      variable: "CMAKE_C_LINK_PIE_SUPPORTED"
       cached: true
       stdout: |
-        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK'
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cEKi65'
         
-        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_b59a9/fast
-        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_b59a9.dir/build.make CMakeFiles/cmTC_b59a9.dir/build
-        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK'
-        Building C object CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl,-v -MD -MT CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
-        Apple clang version 17.0.0 (clang-1700.0.13.3)
-        Target: arm64-apple-darwin24.6.0
-        Thread model: posix
-        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-        clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
-         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.4 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK -target-linker-version 1167.4.1 -v -fcoverage-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
-        clang -cc1 version 17.0.0 (clang-1700.0.13.3) default target arm64-apple-darwin24.6.0
-        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
-        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks"
-        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
-        #include "..." search starts here:
-        #include <...> search starts here:
-         /Library/Developer/CommandLineTools/usr/lib/clang/17/include
-         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
-         /Library/Developer/CommandLineTools/usr/include
-         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
-        End of search list.
-        Linking C executable cmTC_b59a9
-        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b59a9.dir/link.txt --verbose=1
-        Apple clang version 17.0.0 (clang-1700.0.13.3)
-        Target: arm64-apple-darwin24.6.0
-        Thread model: posix
-        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 15.4 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_b59a9 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
-        @(#)PROGRAM:ld PROJECT:ld-1167.4.1
-        BUILD 20:00:10 Mar 12 2025
-        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
-        will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
-        LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
-        TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.0.3.4)
-        Library search paths:
-        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
-        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift
-        Framework search paths:
-        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
-        /usr/bin/cc  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -o cmTC_b59a9
-        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK'
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_d5428/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_d5428.dir/build.make CMakeFiles/cmTC_d5428.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cEKi65'
+        Building C object CMakeFiles/cmTC_d5428.dir/src.c.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cEKi65/src.c -DCMAKE_C_LINK_PIE_SUPPORTED  -fPIE -MD -MT CMakeFiles/cmTC_d5428.dir/src.c.o -MF CMakeFiles/cmTC_d5428.dir/src.c.o.d -o CMakeFiles/cmTC_d5428.dir/src.c.o -fPIC
+        Linking C executable cmTC_d5428.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5428.dir/link.txt --verbose=1
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc  -fPIE -fPIE -pie @CMakeFiles/cmTC_d5428.dir/objects1.rsp -o cmTC_d5428.js
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cEKi65'
         
       exitCode: 0
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:122 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Effective list of requested architectures (possibly empty)  : ""
-      Effective list of architectures found in the ABI info binary: "arm64"
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Parsed C implicit include dir info: rv=done
-        found start of include info
-        found start of implicit include info
-          add: [/Library/Developer/CommandLineTools/usr/lib/clang/17/include]
-          add: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
-          add: [/Library/Developer/CommandLineTools/usr/include]
-        end of search list found
-        collapse include dir [/Library/Developer/CommandLineTools/usr/lib/clang/17/include] ==> [/Library/Developer/CommandLineTools/usr/lib/clang/17/include]
-        collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
-        collapse include dir [/Library/Developer/CommandLineTools/usr/include] ==> [/Library/Developer/CommandLineTools/usr/include]
-        implicit include dirs: [/Library/Developer/CommandLineTools/usr/lib/clang/17/include;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include;/Library/Developer/CommandLineTools/usr/include]
-      
-      
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Parsed C implicit link information:
-        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK']
-        ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_b59a9/fast]
-        ignore line: [/opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_b59a9.dir/build.make CMakeFiles/cmTC_b59a9.dir/build]
-        ignore line: [gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK']
-        ignore line: [Building C object CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl -v -MD -MT CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
-        ignore line: [Apple clang version 17.0.0 (clang-1700.0.13.3)]
-        ignore line: [Target: arm64-apple-darwin24.6.0]
-        ignore line: [Thread model: posix]
-        ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
-        ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
-        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.4 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK -target-linker-version 1167.4.1 -v -fcoverage-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-AKABpK -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
-        ignore line: [clang -cc1 version 17.0.0 (clang-1700.0.13.3) default target arm64-apple-darwin24.6.0]
-        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
-        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks"]
-        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
-        ignore line: [#include "..." search starts here:]
-        ignore line: [#include <...> search starts here:]
-        ignore line: [ /Library/Developer/CommandLineTools/usr/lib/clang/17/include]
-        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
-        ignore line: [ /Library/Developer/CommandLineTools/usr/include]
-        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
-        ignore line: [End of search list.]
-        ignore line: [Linking C executable cmTC_b59a9]
-        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b59a9.dir/link.txt --verbose=1]
-        ignore line: [Apple clang version 17.0.0 (clang-1700.0.13.3)]
-        ignore line: [Target: arm64-apple-darwin24.6.0]
-        ignore line: [Thread model: posix]
-        ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
-        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 15.4 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_b59a9 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
-          arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
-          arg [-demangle] ==> ignore
-          arg [-lto_library] ==> ignore, skip following value
-          arg [/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-          arg [-dynamic] ==> ignore
-          arg [-arch] ==> ignore
-          arg [arm64] ==> ignore
-          arg [-platform_version] ==> ignore
-          arg [macos] ==> ignore
-          arg [15.0.0] ==> ignore
-          arg [15.4] ==> ignore
-          arg [-syslibroot] ==> ignore
-          arg [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk] ==> ignore
-          arg [-mllvm] ==> ignore
-          arg [-enable-linkonceodr-outlining] ==> ignore
-          arg [-o] ==> ignore
-          arg [cmTC_b59a9] ==> ignore
-          arg [-search_paths_first] ==> ignore
-          arg [-headerpad_max_install_names] ==> ignore
-          arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_b59a9.dir/CMakeCCompilerABI.c.o] ==> ignore
-          arg [-lSystem] ==> lib [System]
-          arg [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
-        linker tool for 'C': /Library/Developer/CommandLineTools/usr/bin/ld
-        Library search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
-        Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
-        remove lib [System]
-        remove lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
-        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
-        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
-        collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
-        implicit libs: []
-        implicit objs: []
-        implicit dirs: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
-        implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
-      
-      
-  -
-    kind: "message-v1"
-    backtrace:
-      - "/opt/homebrew/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Running the C compiler's linker: "/Library/Developer/CommandLineTools/usr/bin/ld" "-v"
-      @(#)PROGRAM:ld PROJECT:ld-1167.4.1
-      BUILD 20:00:10 Mar 12 2025
-      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
-      will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
-      LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
-      TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.0.3.4)
   -
     kind: "try_compile-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    checks:
-      - "Detecting CXX compiler ABI info"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckLinkerFlag.cmake:34 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckPIESupported.cmake:188 (cmake_check_linker_flag)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/CMakeLists.txt:134 (check_pie_supported)"
     directories:
-      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt"
-      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt"
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-KlFKGu"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-KlFKGu"
     cmakeVariables:
-      CMAKE_CXX_FLAGS: ""
-      CMAKE_CXX_FLAGS_DEBUG: "-g"
-      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
       CMAKE_EXE_LINKER_FLAGS: ""
-      CMAKE_OSX_ARCHITECTURES: ""
-      CMAKE_OSX_DEPLOYMENT_TARGET: ""
-      CMAKE_OSX_SYSROOT: "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
     buildResult:
-      variable: "CMAKE_CXX_ABI_COMPILED"
+      variable: "CMAKE_C_LINK_NO_PIE_SUPPORTED"
       cached: true
       stdout: |
-        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt'
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-KlFKGu'
         
-        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_78ff0/fast
-        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_78ff0.dir/build.make CMakeFiles/cmTC_78ff0.dir/build
-        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt'
-        Building CXX object CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl,-v -MD -MT CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-        Apple clang version 17.0.0 (clang-1700.0.13.3)
-        Target: arm64-apple-darwin24.6.0
-        Thread model: posix
-        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-        clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
-         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.4 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt -target-linker-version 1167.4.1 -v -fcoverage-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -internal-isystem /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-        clang -cc1 version 17.0.0 (clang-1700.0.13.3) default target arm64-apple-darwin24.6.0
-        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
-        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks"
-        ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
-        #include "..." search starts here:
-        #include <...> search starts here:
-         /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1
-         /Library/Developer/CommandLineTools/usr/lib/clang/17/include
-         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
-         /Library/Developer/CommandLineTools/usr/include
-         /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
-        End of search list.
-        Linking CXX executable cmTC_78ff0
-        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78ff0.dir/link.txt --verbose=1
-        Apple clang version 17.0.0 (clang-1700.0.13.3)
-        Target: arm64-apple-darwin24.6.0
-        Thread model: posix
-        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 15.4 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_78ff0 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
-        @(#)PROGRAM:ld PROJECT:ld-1167.4.1
-        BUILD 20:00:10 Mar 12 2025
-        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
-        will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
-        LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
-        TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.0.3.4)
-        Library search paths:
-        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
-        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift
-        Framework search paths:
-        	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
-        /usr/bin/c++  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_78ff0
-        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt'
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_6233e/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_6233e.dir/build.make CMakeFiles/cmTC_6233e.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-KlFKGu'
+        Building C object CMakeFiles/cmTC_6233e.dir/src.c.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-KlFKGu/src.c -DCMAKE_C_LINK_NO_PIE_SUPPORTED   -MD -MT CMakeFiles/cmTC_6233e.dir/src.c.o -MF CMakeFiles/cmTC_6233e.dir/src.c.o.d -o CMakeFiles/cmTC_6233e.dir/src.c.o -fPIC
+        Linking C executable cmTC_6233e.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6233e.dir/link.txt --verbose=1
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc -no-pie @CMakeFiles/cmTC_6233e.dir/objects1.rsp -o cmTC_6233e.js
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-KlFKGu'
         
       exitCode: 0
   -
-    kind: "message-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:122 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Effective list of requested architectures (possibly empty)  : ""
-      Effective list of architectures found in the ABI info binary: "arm64"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckLinkerFlag.cmake:34 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckPIESupported.cmake:177 (cmake_check_linker_flag)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/CMakeLists.txt:134 (check_pie_supported)"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-LwQfGU"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-LwQfGU"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "CMAKE_CXX_LINK_PIE_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-LwQfGU'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_8df7c/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_8df7c.dir/build.make CMakeFiles/cmTC_8df7c.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-LwQfGU'
+        Building CXX object CMakeFiles/cmTC_8df7c.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-LwQfGU/src.cxx -DCMAKE_CXX_LINK_PIE_SUPPORTED  -fPIE -MD -MT CMakeFiles/cmTC_8df7c.dir/src.cxx.o -MF CMakeFiles/cmTC_8df7c.dir/src.cxx.o.d -o CMakeFiles/cmTC_8df7c.dir/src.cxx.o -fPIC
+        Linking CXX executable cmTC_8df7c.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8df7c.dir/link.txt --verbose=1
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++  -fPIE -fPIE -pie @CMakeFiles/cmTC_8df7c.dir/objects1.rsp -o cmTC_8df7c.js
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-LwQfGU'
+        
+      exitCode: 0
   -
-    kind: "message-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Parsed CXX implicit include dir info: rv=done
-        found start of include info
-        found start of implicit include info
-          add: [/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1]
-          add: [/Library/Developer/CommandLineTools/usr/lib/clang/17/include]
-          add: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
-          add: [/Library/Developer/CommandLineTools/usr/include]
-        end of search list found
-        collapse include dir [/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1] ==> [/Library/Developer/CommandLineTools/usr/include/c++/v1]
-        collapse include dir [/Library/Developer/CommandLineTools/usr/lib/clang/17/include] ==> [/Library/Developer/CommandLineTools/usr/lib/clang/17/include]
-        collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
-        collapse include dir [/Library/Developer/CommandLineTools/usr/include] ==> [/Library/Developer/CommandLineTools/usr/include]
-        implicit include dirs: [/Library/Developer/CommandLineTools/usr/include/c++/v1;/Library/Developer/CommandLineTools/usr/lib/clang/17/include;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include;/Library/Developer/CommandLineTools/usr/include]
-      
-      
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckLinkerFlag.cmake:34 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckPIESupported.cmake:188 (cmake_check_linker_flag)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/CMakeLists.txt:134 (check_pie_supported)"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cD8qKB"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cD8qKB"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "CMAKE_CXX_LINK_NO_PIE_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cD8qKB'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_54779/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_54779.dir/build.make CMakeFiles/cmTC_54779.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cD8qKB'
+        Building CXX object CMakeFiles/cmTC_54779.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cD8qKB/src.cxx -DCMAKE_CXX_LINK_NO_PIE_SUPPORTED   -MD -MT CMakeFiles/cmTC_54779.dir/src.cxx.o -MF CMakeFiles/cmTC_54779.dir/src.cxx.o.d -o CMakeFiles/cmTC_54779.dir/src.cxx.o -fPIC
+        Linking CXX executable cmTC_54779.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54779.dir/link.txt --verbose=1
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -no-pie @CMakeFiles/cmTC_54779.dir/objects1.rsp -o cmTC_54779.js
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-cD8qKB'
+        
+      exitCode: 0
   -
-    kind: "message-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
-    message: |
-      Parsed CXX implicit link information:
-        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt']
-        ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_78ff0/fast]
-        ignore line: [/opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_78ff0.dir/build.make CMakeFiles/cmTC_78ff0.dir/build]
-        ignore line: [gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt']
-        ignore line: [Building CXX object CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl -v -MD -MT CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-        ignore line: [Apple clang version 17.0.0 (clang-1700.0.13.3)]
-        ignore line: [Target: arm64-apple-darwin24.6.0]
-        ignore line: [Thread model: posix]
-        ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
-        ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
-        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=15.4 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt -target-linker-version 1167.4.1 -v -fcoverage-compilation-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-HDsGTt -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -internal-isystem /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-        ignore line: [clang -cc1 version 17.0.0 (clang-1700.0.13.3) default target arm64-apple-darwin24.6.0]
-        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
-        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks"]
-        ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
-        ignore line: [#include "..." search starts here:]
-        ignore line: [#include <...> search starts here:]
-        ignore line: [ /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1]
-        ignore line: [ /Library/Developer/CommandLineTools/usr/lib/clang/17/include]
-        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
-        ignore line: [ /Library/Developer/CommandLineTools/usr/include]
-        ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
-        ignore line: [End of search list.]
-        ignore line: [Linking CXX executable cmTC_78ff0]
-        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78ff0.dir/link.txt --verbose=1]
-        ignore line: [Apple clang version 17.0.0 (clang-1700.0.13.3)]
-        ignore line: [Target: arm64-apple-darwin24.6.0]
-        ignore line: [Thread model: posix]
-        ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
-        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 15.4 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_78ff0 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
-          arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
-          arg [-demangle] ==> ignore
-          arg [-lto_library] ==> ignore, skip following value
-          arg [/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-          arg [-dynamic] ==> ignore
-          arg [-arch] ==> ignore
-          arg [arm64] ==> ignore
-          arg [-platform_version] ==> ignore
-          arg [macos] ==> ignore
-          arg [15.0.0] ==> ignore
-          arg [15.4] ==> ignore
-          arg [-syslibroot] ==> ignore
-          arg [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk] ==> ignore
-          arg [-mllvm] ==> ignore
-          arg [-enable-linkonceodr-outlining] ==> ignore
-          arg [-o] ==> ignore
-          arg [cmTC_78ff0] ==> ignore
-          arg [-search_paths_first] ==> ignore
-          arg [-headerpad_max_install_names] ==> ignore
-          arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_78ff0.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-          arg [-lc++] ==> lib [c++]
-          arg [-lSystem] ==> lib [System]
-          arg [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
-        linker tool for 'CXX': /Library/Developer/CommandLineTools/usr/bin/ld
-        Library search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
-        Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
-        remove lib [System]
-        remove lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
-        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
-        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
-        collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
-        implicit libs: [c++]
-        implicit objs: []
-        implicit dirs: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift]
-        implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
-      
-      
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:74 (check_cxx_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:79 (check_support)"
+    checks:
+      - "Performing Test HAS_CXXABI"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-EUfv8s"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-EUfv8s"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "HAS_CXXABI"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-EUfv8s'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_04d37/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_04d37.dir/build.make CMakeFiles/cmTC_04d37.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-EUfv8s'
+        Building CXX object CMakeFiles/cmTC_04d37.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-EUfv8s/src.cxx -DHAS_CXXABI @CMakeFiles/cmTC_04d37.dir/includes_CXX.rsp  -MD -MT CMakeFiles/cmTC_04d37.dir/src.cxx.o -MF CMakeFiles/cmTC_04d37.dir/src.cxx.o.d -o CMakeFiles/cmTC_04d37.dir/src.cxx.o -fPIC
+        Linking CXX executable cmTC_04d37.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04d37.dir/link.txt --verbose=1
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ @CMakeFiles/cmTC_04d37.dir/objects1.rsp -o cmTC_04d37.js
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-EUfv8s'
+        
+      exitCode: 0
   -
-    kind: "message-v1"
+    kind: "try_compile-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
-      - "/opt/homebrew/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:74 (check_cxx_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:83 (check_support)"
+    checks:
+      - "Performing Test HAS_UNWIND"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-COJQ86"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-COJQ86"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "HAS_UNWIND"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-COJQ86'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_1bd1c/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_1bd1c.dir/build.make CMakeFiles/cmTC_1bd1c.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-COJQ86'
+        Building CXX object CMakeFiles/cmTC_1bd1c.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-COJQ86/src.cxx -DHAS_UNWIND @CMakeFiles/cmTC_1bd1c.dir/includes_CXX.rsp  -MD -MT CMakeFiles/cmTC_1bd1c.dir/src.cxx.o -MF CMakeFiles/cmTC_1bd1c.dir/src.cxx.o.d -o CMakeFiles/cmTC_1bd1c.dir/src.cxx.o -fPIC
+        Linking CXX executable cmTC_1bd1c.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1bd1c.dir/link.txt --verbose=1
+        wasm-ld: error: CMakeFiles/cmTC_1bd1c.dir/src.cxx.o: undefined symbol: _Unwind_GetIP
+        em++: error: '/opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm/bin/wasm-ld -o cmTC_1bd1c.wasm -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr /var/folders/ff/hs9jdqwx2jg0db3xn5bn02gh0000gn/T/tmpbvda7w_clibemscripten_js_symbols.so --strip-debug --export=emscripten_stack_get_end --export=emscripten_stack_get_free --export=emscripten_stack_get_base --export=emscripten_stack_get_current --export=emscripten_stack_init --export=_emscripten_stack_alloc --export=__wasm_call_ctors --export=_emscripten_stack_restore --export-if-defined=__start_em_asm --export-if-defined=__stop_em_asm --export-if-defined=__start_em_lib_deps --export-if-defined=__stop_em_lib_deps --export-if-defined=__start_em_js --export-if-defined=__stop_em_js --export-if-defined=main --export-if-defined=__main_argc_argv --export-if-defined=fflush --export-table -z stack-size=65536 --no-growable-memory --initial-heap=16777216 --no-entry --stack-first --table-base=1 CMakeFiles/cmTC_1bd1c.dir/src.cxx.o -L/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/lib/wasm32-emscripten -L/opt/homebrew/Cellar/emscripten/4.0.21/libexec/src/lib -lGL-getprocaddr -lal -lhtml5 -lstubs-debug -lnoexit -lc-debug -ldlmalloc-debug -lcompiler_rt -lc++-debug-noexcept -lc++abi-debug-noexcept -lsockets' failed (returned 1)
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ @CMakeFiles/cmTC_1bd1c.dir/objects1.rsp -o cmTC_1bd1c.js
+        gmake[1]: *** [CMakeFiles/cmTC_1bd1c.dir/build.make:105: cmTC_1bd1c.js] Error 1
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-COJQ86'
+        gmake: *** [Makefile:134: cmTC_1bd1c/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:74 (check_cxx_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:84 (check_support)"
+    checks:
+      - "Performing Test HAS_EXECINFO"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "HAS_EXECINFO"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_70b3a/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_70b3a.dir/build.make CMakeFiles/cmTC_70b3a.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz'
+        Building CXX object CMakeFiles/cmTC_70b3a.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz/src.cxx -DHAS_EXECINFO @CMakeFiles/cmTC_70b3a.dir/includes_CXX.rsp  -MD -MT CMakeFiles/cmTC_70b3a.dir/src.cxx.o -MF CMakeFiles/cmTC_70b3a.dir/src.cxx.o.d -o CMakeFiles/cmTC_70b3a.dir/src.cxx.o -fPIC
+        In file included from /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz/src.cxx:1:
+        /Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/cmake/has_execinfo.cpp:1:10: fatal error: 'execinfo.h' file not found
+            1 | #include <execinfo.h>
+              |          ^~~~~~~~~~~~
+        1 error generated.
+        gmake[1]: *** [CMakeFiles/cmTC_70b3a.dir/build.make:83: CMakeFiles/cmTC_70b3a.dir/src.cxx.o] Error 1
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-JDHLIz'
+        gmake: *** [Makefile:134: cmTC_70b3a/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:74 (check_cxx_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:85 (check_support)"
+    checks:
+      - "Performing Test HAS_BACKTRACE"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "HAS_BACKTRACE"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_ccbb0/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_ccbb0.dir/build.make CMakeFiles/cmTC_ccbb0.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ'
+        Building CXX object CMakeFiles/cmTC_ccbb0.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ/src.cxx -DHAS_BACKTRACE @CMakeFiles/cmTC_ccbb0.dir/includes_CXX.rsp  -MD -MT CMakeFiles/cmTC_ccbb0.dir/src.cxx.o -MF CMakeFiles/cmTC_ccbb0.dir/src.cxx.o.d -o CMakeFiles/cmTC_ccbb0.dir/src.cxx.o -fPIC
+        In file included from /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ/src.cxx:1:
+        /Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/cmake/has_backtrace.cpp:4:10: fatal error: 'backtrace.h' file not found
+            4 | #include <backtrace.h>
+              |          ^~~~~~~~~~~~~
+        1 error generated.
+        gmake[1]: *** [CMakeFiles/cmTC_ccbb0.dir/build.make:83: CMakeFiles/cmTC_ccbb0.dir/src.cxx.o] Error 1
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-4lCJkJ'
+        gmake: *** [Makefile:134: cmTC_ccbb0/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:74 (check_cxx_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:92 (check_support)"
+    checks:
+      - "Performing Test HAS_CXX_EXCEPTION_TYPE"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "HAS_CXX_EXCEPTION_TYPE"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_dc940/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_dc940.dir/build.make CMakeFiles/cmTC_dc940.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY'
+        Building CXX object CMakeFiles/cmTC_dc940.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY/src.cxx -DHAS_CXX_EXCEPTION_TYPE @CMakeFiles/cmTC_dc940.dir/includes_CXX.rsp  -MD -MT CMakeFiles/cmTC_dc940.dir/src.cxx.o -MF CMakeFiles/cmTC_dc940.dir/src.cxx.o.d -o CMakeFiles/cmTC_dc940.dir/src.cxx.o -fPIC
+        In file included from /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY/src.cxx:1:
+        /Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/cmake/has_cxx_exception_type.cpp:5:5: warning: expression result unused; should this cast be to 'void'? [-Wunused-value]
+            5 |     (void*) t;
+              |     ^    ~
+        1 warning generated.
+        Linking CXX executable cmTC_dc940.js
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc940.dir/link.txt --verbose=1
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ @CMakeFiles/cmTC_dc940.dir/objects1.rsp -o cmTC_dc940.js
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-6RX5YY'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:74 (check_cxx_source_compiles)"
+      - "build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/CMakeLists.txt:96 (check_support)"
+    checks:
+      - "Performing Test HAS_DL_FIND_OBJECT"
+    directories:
+      source: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6"
+      binary: "/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emscan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_CXX_LINK_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_NO_PIE_SUPPORTED: "1"
+      CMAKE_C_LINK_PIE_SUPPORTED: "1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/cmake/Modules/;/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/cmake/Modules/"
+    buildResult:
+      variable: "HAS_DL_FIND_OBJECT"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_6940f/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_6940f.dir/build.make CMakeFiles/cmTC_6940f.dir/build
+        gmake[1]: Entering directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6'
+        Building CXX object CMakeFiles/cmTC_6940f.dir/src.cxx.o
+        /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6/src.cxx -DHAS_DL_FIND_OBJECT @CMakeFiles/cmTC_6940f.dir/includes_CXX.rsp  -MD -MT CMakeFiles/cmTC_6940f.dir/src.cxx.o -MF CMakeFiles/cmTC_6940f.dir/src.cxx.o.d -o CMakeFiles/cmTC_6940f.dir/src.cxx.o -fPIC
+        In file included from /Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6/src.cxx:1:
+        /Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace/cmake/has_dl_find_object.cpp:4:5: error: unknown type name 'dl_find_object'
+            4 |     dl_find_object result;
+              |     ^
+        1 error generated.
+        gmake[1]: *** [CMakeFiles/cmTC_6940f.dir/build.make:83: CMakeFiles/cmTC_6940f.dir/src.cxx.o] Error 1
+        gmake[1]: Leaving directory '/Users/will/dev/BCHLight/build_wasm/CMakeFiles/CMakeScratch/TryCompile-N2LjY6'
+        gmake: *** [Makefile:134: cmTC_6940f/fast] Error 2
+        
+      exitCode: 2
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
       - "CMakeLists.txt:2 (project)"
-    message: |
-      Running the CXX compiler's linker: "/Library/Developer/CommandLineTools/usr/bin/ld" "-v"
-      @(#)PROGRAM:ld PROJECT:ld-1167.4.1
-      BUILD 20:00:10 Mar 12 2025
-      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
-      will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
-      LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
-      TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.0.3.4)
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
 ...

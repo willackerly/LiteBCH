@@ -31,6 +31,9 @@ default_target: all
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -64,16 +67,6 @@ CMAKE_BINARY_DIR = /Users/will/dev/BCHLight/build_wasm
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	/opt/homebrew/bin/ctest $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -198,110 +191,6 @@ litebch_wasm/fast:
 .PHONY : litebch_wasm/fast
 
 #=============================================================================
-# Target rules for targets named unit_tests
-
-# Build rule for target.
-unit_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests
-.PHONY : unit_tests
-
-# fast build rule for target.
-unit_tests/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unit_tests.dir/build.make tests/CMakeFiles/unit_tests.dir/build
-.PHONY : unit_tests/fast
-
-#=============================================================================
-# Target rules for targets named legacy_compat_test
-
-# Build rule for target.
-legacy_compat_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 legacy_compat_test
-.PHONY : legacy_compat_test
-
-# fast build rule for target.
-legacy_compat_test/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/legacy_compat_test.dir/build.make tests/CMakeFiles/legacy_compat_test.dir/build
-.PHONY : legacy_compat_test/fast
-
-#=============================================================================
-# Target rules for targets named kernel_bch
-
-# Build rule for target.
-kernel_bch: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kernel_bch
-.PHONY : kernel_bch
-
-# fast build rule for target.
-kernel_bch/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/kernel_bch.dir/build.make tests/CMakeFiles/kernel_bch.dir/build
-.PHONY : kernel_bch/fast
-
-#=============================================================================
-# Target rules for targets named kernel_bench
-
-# Build rule for target.
-kernel_bench: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kernel_bench
-.PHONY : kernel_bench
-
-# fast build rule for target.
-kernel_bench/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/kernel_bench.dir/build.make tests/CMakeFiles/kernel_bench.dir/build
-.PHONY : kernel_bench/fast
-
-#=============================================================================
-# Target rules for targets named fast_bench
-
-# Build rule for target.
-fast_bench: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fast_bench
-.PHONY : fast_bench
-
-# fast build rule for target.
-fast_bench/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/fast_bench.dir/build.make tests/CMakeFiles/fast_bench.dir/build
-.PHONY : fast_bench/fast
-
-#=============================================================================
-# Target rules for targets named verify_wasm_cpp_match
-
-# Build rule for target.
-verify_wasm_cpp_match: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 verify_wasm_cpp_match
-.PHONY : verify_wasm_cpp_match
-
-# fast build rule for target.
-verify_wasm_cpp_match/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/verify_wasm_cpp_match.dir/build.make tests/CMakeFiles/verify_wasm_cpp_match.dir/build
-.PHONY : verify_wasm_cpp_match/fast
-
-#=============================================================================
-# Target rules for targets named repro_demo_failure
-
-# Build rule for target.
-repro_demo_failure: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 repro_demo_failure
-.PHONY : repro_demo_failure
-
-# fast build rule for target.
-repro_demo_failure/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/repro_demo_failure.dir/build.make tests/CMakeFiles/repro_demo_failure.dir/build
-.PHONY : repro_demo_failure/fast
-
-#=============================================================================
-# Target rules for targets named comprehensive_test
-
-# Build rule for target.
-comprehensive_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 comprehensive_test
-.PHONY : comprehensive_test
-
-# fast build rule for target.
-comprehensive_test/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/comprehensive_test.dir/build.make tests/CMakeFiles/comprehensive_test.dir/build
-.PHONY : comprehensive_test/fast
-
-#=============================================================================
 # Target rules for targets named basic_usage
 
 # Build rule for target.
@@ -374,18 +263,9 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... basic_usage"
-	@echo "... comprehensive_test"
-	@echo "... fast_bench"
-	@echo "... kernel_bch"
-	@echo "... kernel_bench"
-	@echo "... legacy_compat_test"
 	@echo "... litebch"
 	@echo "... litebch_wasm"
-	@echo "... repro_demo_failure"
-	@echo "... unit_tests"
-	@echo "... verify_wasm_cpp_match"
 	@echo "... src/LiteBCH.o"
 	@echo "... src/LiteBCH.i"
 	@echo "... src/LiteBCH.s"

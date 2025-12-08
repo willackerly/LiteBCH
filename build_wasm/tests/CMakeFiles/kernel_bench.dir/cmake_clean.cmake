@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/kernel_bench.dir/kernel_bench.cpp.o"
   "CMakeFiles/kernel_bench.dir/kernel_bench.cpp.o.d"
-  "kernel_bench"
+  "kernel_bench.js"
   "kernel_bench.pdb"
 )
 

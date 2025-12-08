@@ -10,43 +10,37 @@ using namespace emscripten;
 
 // Helper to expose Byte-Wise Encode to JS via Vector Interface
 // (JS deals with IntVectors of bits usually in this API)
-std::vector<int> encode_fast_wrapper(lite::LiteBCH &bch,
-                                     const std::vector<int> &msg_bits) {
-  int K = bch.get_K();
-  int N = bch.get_N();
-  if (msg_bits.size() != (size_t)K)
-    throw std::runtime_error("Invalid K");
+// Direct Byte-Buffer Interface for High Performance in JS
+// Accepts Uint8Array from JS via val
+void encode_bytes_wrapper(lite::LiteBCH &bch, val data_qs, int len,
+                          val ecc_qs) {
+  // 1. Get raw pointers into WASM memory from the typed arrays
+  // NOTE: This assumes the JS side passes HEAPU8 subarrays or pointers
+  // directly? Embind is safer with 'std::string' or 'val'. Best practice for
+  // bulk data: Intecept memory view or copy. For simplicity/safety, we'll copy
+  // in/out using std::vector<uint8_t> binding? Actually, passing 'uintptr_t'
+  // pointers from JS (Module.HEAU8) is the fastest way "C-style".
 
-  // Pack bits to bytes (MSB first)
-  int data_bytes_len = (K + 7) / 8;
-  std::vector<uint8_t> data(data_bytes_len, 0);
-  for (int i = 0; i < K; ++i) {
-    if (msg_bits[i]) {
-      int pos_from_start = (K - 1 - i);
-      data[pos_from_start / 8] |= (1 << (7 - (pos_from_start % 8)));
-    }
-  }
+  // Let's implement the safely exposed version that takes integer pointers
+  // (offsets) The JS side will use `alloc()` to get these pointers.
 
-  // Encode
-  int ecc_bytes_len = (N - K + 7) / 8;
-  std::vector<uint8_t> ecc(ecc_bytes_len, 0);
-  bch.encode(data.data(), data_bytes_len, ecc.data());
+  // Re-signature to take pointers as integers
+  // JS: _encode_bytes(bch, ptr_data, len, ptr_ecc)
+  // But we are in a class method context.
 
-  // Reconstruct Codeword [Parity | Message] to match Decoder/Legacy
-  std::vector<int> codeword(N, 0);
+  // We can't change the binding easily without standard types.
+  // Let's rely on std::string as a byte container (binary string) which Embind
+  // supports well, OR just stick to standard vector<uint8_t> which Embind
+  // supports if registered.
+}
 
-  // ECC
-  int n_red = N - K;
-  for (int i = 0; i < n_red; ++i) {
-    if (ecc[i / 8] & (1 << (i % 8)))
-      codeword[i] = 1;
-  }
-  // Msg
-  for (int i = 0; i < K; ++i) {
-    if (msg_bits[i])
-      codeword[n_red + i] = 1;
-  }
-  return codeword;
+// Better Approach: Expose 'encode' taking integer memory addresses (pointers).
+// This allows JS to malloc inputs/outputs and pass offsets.
+void encode_raw_ptrs(lite::LiteBCH &bch, uintptr_t data_ptr, int len,
+                     uintptr_t ecc_ptr) {
+  uint8_t *data = reinterpret_cast<uint8_t *>(data_ptr);
+  uint8_t *ecc = reinterpret_cast<uint8_t *>(ecc_ptr);
+  bch.encode(data, len, ecc);
 }
 
 // Factory for debug
@@ -74,8 +68,13 @@ EMSCRIPTEN_BINDINGS(litebch_module) {
                 static_cast<std::vector<int> (lite::LiteBCH::*)(
                     const std::vector<int> &)>(&lite::LiteBCH::encode))
 
-      // Fast Encode (Wrapped)
-      .function("encode_fast", &encode_fast_wrapper)
+      // Raw Byte Buffer Encode (High Perf)
+      // JS must manage memory (alloc/free) and pass pointers.
+      .function("encode_raw_ptr", &encode_raw_ptrs)
 
-      .function("decode", &lite::LiteBCH::decode);
+      .property("ecc_bytes", &lite::LiteBCH::get_ecc_bytes)
+
+      .function("decode", static_cast<bool (lite::LiteBCH::*)(
+                              const std::vector<int> &, std::vector<int> &)>(
+                              &lite::LiteBCH::decode));
 }

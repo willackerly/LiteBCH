@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/fast_bench.dir/fast_bench.cpp.o"
   "CMakeFiles/fast_bench.dir/fast_bench.cpp.o.d"
-  "fast_bench"
+  "fast_bench.js"
   "fast_bench.pdb"
 )
 

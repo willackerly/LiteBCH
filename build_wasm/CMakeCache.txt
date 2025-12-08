@@ -14,11 +14,37 @@
 # EXTERNAL cache entries
 ########################
 
-//Path to a program.
-CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
+//Enable external strings for the help documentation
+AFF3CT_EXT_STRINGS:BOOL=ON
+
+//Include the StreamPU library inside the AFF3CT library
+AFF3CT_INCLUDE_SPU_LIB:BOOL=ON
+
+//Link with the GSL library (used in the channels)
+AFF3CT_LINK_GSL:BOOL=OFF
+
+//Link with the MKL library (used in the channels)
+AFF3CT_LINK_MKL:BOOL=OFF
+
+//Enable the MPI support
+AFF3CT_MPI:BOOL=OFF
+
+//Compile without .git directory, provided a version and hash
+AFF3CT_OVERRIDE_VERSION:BOOL=OFF
+
+//Enable the bit packing technique for Polar code SC decoding
+AFF3CT_POLAR_BIT_PACKING:BOOL=ON
+
+//Enable the use of the external Tal & Vardy Polar best channels
+// generator
+AFF3CT_POLAR_BOUNDS:BOOL=OFF
+
+//Select the precision in bits (can be '8', '16', '32', '64' or
+// 'MULTI')
+AFF3CT_PREC:STRING=MULTI
 
 //Path to a program.
-CMAKE_AR:FILEPATH=/usr/bin/ar
+CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
 //Build type
 CMAKE_BUILD_TYPE:STRING=Release
@@ -26,8 +52,8 @@ CMAKE_BUILD_TYPE:STRING=Release
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+//No help, variable specified on the command line.
+CMAKE_CROSSCOMPILING_EMULATOR:UNINITIALIZED=/opt/homebrew/opt/node/bin/node
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -44,8 +70,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+//`clang-scan-deps` dependency scanner
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS:FILEPATH=CMAKE_C_COMPILER_CLANG_SCAN_DEPS-NOTFOUND
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -119,14 +145,11 @@ CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
 //Man documentation (DATAROOTDIR/man)
 CMAKE_INSTALL_MANDIR:PATH=
 
-//Path to a program.
-CMAKE_INSTALL_NAME_TOOL:FILEPATH=/usr/bin/install_name_tool
-
 //C header files for non-gcc (/usr/include)
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=/usr/local
+CMAKE_INSTALL_PREFIX:PATH=/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -167,24 +190,10 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_NM:FILEPATH=/usr/bin/nm
-
-//Path to a program.
 CMAKE_OBJCOPY:FILEPATH=CMAKE_OBJCOPY-NOTFOUND
 
 //Path to a program.
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
-
-//Build architectures for OSX
-CMAKE_OSX_ARCHITECTURES:STRING=
-
-//Minimum OS X version to target for deployment (at runtime); newer
-// APIs weak linked. Set to empty string for default value.
-CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
-
-//The product will be built against the headers and libraries located
-// inside the indicated SDK.
-CMAKE_OSX_SYSROOT:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 
 //Value Computed by CMake
 CMAKE_PROJECT_COMPAT_VERSION:STATIC=
@@ -215,9 +224,6 @@ CMAKE_PROJECT_VERSION_PATCH:STATIC=0
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
-
-//Path to a program.
-CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
 
 //Path to a program.
 CMAKE_READELF:FILEPATH=CMAKE_READELF-NOTFOUND
@@ -273,19 +279,123 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 CMAKE_STRIP:FILEPATH=/usr/bin/strip
 
 //Path to a program.
-CMAKE_TAPI:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/tapi
+CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
+
+//No help, variable specified on the command line.
+CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
-CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+CMAKE_VERBOSE_MAKEFILE:BOOL=ON
+
+//Absolute path to the addr2line executable you want to use.
+CPPTRACE_ADDR2LINE_PATH:STRING=
+
+CPPTRACE_ADDR2LINE_SEARCH_SYSTEM_PATH:BOOL=OFF
+
+//Path to backtrace.h, if the compiler doesn't already know it.
+// Check /usr/lib/gcc/x86_64-linux-gnu/*/include.
+CPPTRACE_BACKTRACE_PATH:STRING=
+
+//Override BUILD_SHARED_LIBS for cpptrace library
+CPPTRACE_BUILD_SHARED:BOOL=OFF
+
+//Override BUILD_TESTING for cpptrace library
+CPPTRACE_BUILD_TESTING:BOOL=OFF
+
+CPPTRACE_CONAN:BOOL=OFF
+
+CPPTRACE_DEMANGLE_WITH_CXXABI:BOOL=OFF
+
+CPPTRACE_DEMANGLE_WITH_NOTHING:BOOL=OFF
+
+CPPTRACE_DEMANGLE_WITH_WINAPI:BOOL=OFF
+
+CPPTRACE_GET_SYMBOLS_WITH_ADDR2LINE:BOOL=ON
+
+CPPTRACE_GET_SYMBOLS_WITH_DBGHELP:BOOL=OFF
+
+CPPTRACE_GET_SYMBOLS_WITH_LIBBACKTRACE:BOOL=OFF
+
+CPPTRACE_GET_SYMBOLS_WITH_LIBDL:BOOL=OFF
+
+CPPTRACE_GET_SYMBOLS_WITH_LIBDWARF:BOOL=OFF
+
+CPPTRACE_GET_SYMBOLS_WITH_NOTHING:BOOL=OFF
+
+//Hard limit on unwinding depth. Default is 200.
+CPPTRACE_HARD_MAX_FRAMES:STRING=
+
+//Use SYSTEM modifier for cpptrace's includes, disabling warnings
+CPPTRACE_INCLUDES_WITH_SYSTEM:BOOL=ON
+
+//CMake package config location relative to the install prefix
+CPPTRACE_INSTALL_CMAKEDIR:STRING=lib/cmake/cpptrace
+
+CPPTRACE_POSITION_INDEPENDENT_CODE:BOOL=ON
+
+CPPTRACE_SANITIZER_BUILD:BOOL=OFF
+
+CPPTRACE_UNWIND_WITH_DBGHELP:BOOL=OFF
+
+CPPTRACE_UNWIND_WITH_EXECINFO:BOOL=OFF
+
+CPPTRACE_UNWIND_WITH_LIBUNWIND:BOOL=OFF
+
+CPPTRACE_UNWIND_WITH_NOTHING:BOOL=ON
+
+CPPTRACE_UNWIND_WITH_UNWIND:BOOL=OFF
+
+CPPTRACE_UNWIND_WITH_WINAPI:BOOL=OFF
+
+CPPTRACE_USE_EXTERNAL_LIBDWARF:BOOL=OFF
+
+CPPTRACE_USE_EXTERNAL_ZSTD:BOOL=OFF
+
+CPPTRACE_VCPKG:BOOL=OFF
+
+CPPTRACE_WERROR_BUILD:BOOL=OFF
+
+//Force C/C++ compiler
+EMSCRIPTEN_FORCE_COMPILERS:BOOL=ON
+
+//If set, static library targets generate LLVM bitcode files (.bc).
+// If disabled (default), UNIX ar archives (.a) are generated.
+EMSCRIPTEN_GENERATE_BITCODE_STATIC_LIBRARIES:BOOL=OFF
+
+//Enable AFF3CT verification in comprehensive_test
+ENABLE_AFF3CT_TESTS:BOOL=ON
+
+//Directory under which to collect all populated content
+FETCHCONTENT_BASE_DIR:PATH=/Users/will/dev/BCHLight/build_wasm/_deps
+
+//Disables all attempts to download or update content and assumes
+// source dirs already exist
+FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
+
+//Enables QUIET option for all content population
+FETCHCONTENT_QUIET:BOOL=ON
+
+//When not empty, overrides where to find pre-populated content
+// for aff3ct
+FETCHCONTENT_SOURCE_DIR_AFF3CT:PATH=
+
+//Enables UPDATE_DISCONNECTED behavior for all content population
+FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of aff3ct
+FETCHCONTENT_UPDATES_DISCONNECTED_AFF3CT:BOOL=OFF
+
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 
 //Build LiteBCH examples
 LITEBCH_BUILD_EXAMPLES:BOOL=ON
 
 //Build LiteBCH tests
-LITEBCH_BUILD_TESTS:BOOL=ON
+LITEBCH_BUILD_TESTS:BOOL=OFF
 
 //Build WASM bindings using Emscripten
 LITEBCH_BUILD_WASM:BOOL=ON
@@ -299,15 +409,79 @@ LiteBCH_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 LiteBCH_SOURCE_DIR:STATIC=/Users/will/dev/BCHLight
 
+//Enable the colors in the terminal
+SPU_COLORS:BOOL=ON
+
+//Compile the shared library
+SPU_COMPILE_SHARED_LIB:BOOL=OFF
+
+//Compile the static library
+SPU_COMPILE_STATIC_LIB:BOOL=OFF
+
+//Remove checks to speedup the code
+SPU_FAST:BOOL=OFF
+
+//Annotate the code for Helgrind thread error detector
+SPU_HELGRIND:BOOL=OFF
+
+//Link with the hwloc library (used for threads pinning)
+SPU_LINK_HWLOC:BOOL=OFF
+
+//Compile without .git directory, provided a version and hash
+SPU_OVERRIDE_VERSION:BOOL=OFF
+
+//Print message each time a deprecated func. is called
+SPU_SHOW_DEPRECATED:BOOL=OFF
+
+//Print the stack trace when an exception is raised
+SPU_STACKTRACE:BOOL=ON
+
+//Try to print the stack trace when a segfault occurs
+SPU_STACKTRACE_SEGFAULT:BOOL=OFF
+
+//Enable the compilation of the tests
+SPU_TESTS:BOOL=ON
+
+//Value Computed by CMake
+aff3ct_BINARY_DIR:STATIC=/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-build
+
+//Value Computed by CMake
+aff3ct_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+aff3ct_SOURCE_DIR:STATIC=/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src
+
+//Value Computed by CMake
+cpptrace_BINARY_DIR:STATIC=/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-build/lib/streampu/lib/cpptrace
+
+//Value Computed by CMake
+cpptrace_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+cpptrace_SOURCE_DIR:STATIC=/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu/lib/cpptrace
+
+//Value Computed by CMake
+streampu_BINARY_DIR:STATIC=/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-build/lib/streampu
+
+//Value Computed by CMake
+streampu_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+streampu_SOURCE_DIR:STATIC=/Users/will/dev/BCHLight/build_wasm/_deps/aff3ct-src/lib/streampu
+
 
 ########################
 # INTERNAL cache entries
 ########################
 
+//Compile the executable
+AFF3CT_COMPILE_EXE:INTERNAL=OFF
+//Compile the shared library
+AFF3CT_COMPILE_SHARED_LIB:INTERNAL=OFF
+//Compile the static library
+AFF3CT_COMPILE_STATIC_LIB:INTERNAL=ON
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_AR
-CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/Users/will/dev/BCHLight/build_wasm
 //Major version of cmake used to create the current loaded cache
@@ -324,8 +498,6 @@ CMAKE_COMMAND:INTERNAL=/opt/homebrew/bin/cmake
 CMAKE_CPACK_COMMAND:INTERNAL=/opt/homebrew/bin/cpack
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=/opt/homebrew/bin/ctest
-//ADVANCED property for variable: CMAKE_CXX_COMPILER
-CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
@@ -336,8 +508,12 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER
-CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
+//Test CMAKE_CXX_LINK_NO_PIE_SUPPORTED
+CMAKE_CXX_LINK_NO_PIE_SUPPORTED:INTERNAL=1
+//Test CMAKE_CXX_LINK_PIE_SUPPORTED
+CMAKE_CXX_LINK_PIE_SUPPORTED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_CLANG_SCAN_DEPS
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
 CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
@@ -348,12 +524,14 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//Test CMAKE_C_LINK_NO_PIE_SUPPORTED
+CMAKE_C_LINK_NO_PIE_SUPPORTED:INTERNAL=1
+//Test CMAKE_C_LINK_PIE_SUPPORTED
+CMAKE_C_LINK_PIE_SUPPORTED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
 CMAKE_EDIT_COMMAND:INTERNAL=/opt/homebrew/bin/ccmake
-//Executable file format
-CMAKE_EXECUTABLE_FORMAT:INTERNAL=MACHO
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
@@ -401,8 +579,6 @@ CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
 CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_MANDIR
 CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_INSTALL_NAME_TOOL
-CMAKE_INSTALL_NAME_TOOL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
 CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
@@ -429,18 +605,14 @@ CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_NM
-CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
 CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RANLIB
-CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
@@ -477,6 +649,44 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_ADDR2LINE_PATH
+CPPTRACE_ADDR2LINE_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_ADDR2LINE_SEARCH_SYSTEM_PATH
+CPPTRACE_ADDR2LINE_SEARCH_SYSTEM_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_BACKTRACE_PATH
+CPPTRACE_BACKTRACE_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_BUILD_SHARED
+CPPTRACE_BUILD_SHARED-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_BUILD_TESTING
+CPPTRACE_BUILD_TESTING-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_CONAN
+CPPTRACE_CONAN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_INCLUDES_WITH_SYSTEM
+CPPTRACE_INCLUDES_WITH_SYSTEM-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_INSTALL_CMAKEDIR
+CPPTRACE_INSTALL_CMAKEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_SANITIZER_BUILD
+CPPTRACE_SANITIZER_BUILD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_VCPKG
+CPPTRACE_VCPKG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPPTRACE_WERROR_BUILD
+CPPTRACE_WERROR_BUILD-ADVANCED:INTERNAL=1
+//If true, we are targeting Emscripten output.
+EMSCRIPTEN:INTERNAL=1
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+//Test HAS_BACKTRACE
+HAS_BACKTRACE:INTERNAL=
+//Test HAS_CXXABI
+HAS_CXXABI:INTERNAL=1
+//Test HAS_CXX_EXCEPTION_TYPE
+HAS_CXX_EXCEPTION_TYPE:INTERNAL=1
+//Test HAS_DL_FIND_OBJECT
+HAS_DL_FIND_OBJECT:INTERNAL=
+//Test HAS_EXECINFO
+HAS_EXECINFO:INTERNAL=
+//Test HAS_UNWIND
+HAS_UNWIND:INTERNAL=
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot
 

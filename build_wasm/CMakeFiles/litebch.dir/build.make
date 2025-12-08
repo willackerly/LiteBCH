@@ -27,6 +27,9 @@
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -73,18 +76,19 @@ CMakeFiles/litebch.dir/codegen:
 .PHONY : CMakeFiles/litebch.dir/codegen
 
 CMakeFiles/litebch.dir/src/LiteBCH.cpp.o: CMakeFiles/litebch.dir/flags.make
+CMakeFiles/litebch.dir/src/LiteBCH.cpp.o: CMakeFiles/litebch.dir/includes_CXX.rsp
 CMakeFiles/litebch.dir/src/LiteBCH.cpp.o: /Users/will/dev/BCHLight/src/LiteBCH.cpp
 CMakeFiles/litebch.dir/src/LiteBCH.cpp.o: CMakeFiles/litebch.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/litebch.dir/src/LiteBCH.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/litebch.dir/src/LiteBCH.cpp.o -MF CMakeFiles/litebch.dir/src/LiteBCH.cpp.o.d -o CMakeFiles/litebch.dir/src/LiteBCH.cpp.o -c /Users/will/dev/BCHLight/src/LiteBCH.cpp
+	/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/src/LiteBCH.cpp $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/litebch.dir/src/LiteBCH.cpp.o -MF CMakeFiles/litebch.dir/src/LiteBCH.cpp.o.d -o CMakeFiles/litebch.dir/src/LiteBCH.cpp.o -fPIC
 
 CMakeFiles/litebch.dir/src/LiteBCH.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/litebch.dir/src/LiteBCH.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/will/dev/BCHLight/src/LiteBCH.cpp > CMakeFiles/litebch.dir/src/LiteBCH.cpp.i
+	/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/will/dev/BCHLight/src/LiteBCH.cpp > CMakeFiles/litebch.dir/src/LiteBCH.cpp.i
 
 CMakeFiles/litebch.dir/src/LiteBCH.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/litebch.dir/src/LiteBCH.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/will/dev/BCHLight/src/LiteBCH.cpp -o CMakeFiles/litebch.dir/src/LiteBCH.cpp.s
+	/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/will/dev/BCHLight/src/LiteBCH.cpp -o CMakeFiles/litebch.dir/src/LiteBCH.cpp.s
 
 # Object files for target litebch
 litebch_OBJECTS = \

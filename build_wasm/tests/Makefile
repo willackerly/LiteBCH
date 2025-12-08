@@ -31,6 +31,9 @@ default_target: all
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -283,6 +286,72 @@ comprehensive_test/fast:
 	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/comprehensive_test.dir/build.make tests/CMakeFiles/comprehensive_test.dir/build
 .PHONY : comprehensive_test/fast
 
+# Convenience name for target.
+tests/CMakeFiles/benchmark.dir/rule:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/benchmark.dir/rule
+.PHONY : tests/CMakeFiles/benchmark.dir/rule
+
+# Convenience name for target.
+benchmark: tests/CMakeFiles/benchmark.dir/rule
+.PHONY : benchmark
+
+# fast build rule for target.
+benchmark/fast:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/benchmark.dir/build.make tests/CMakeFiles/benchmark.dir/build
+.PHONY : benchmark/fast
+
+# Convenience name for target.
+tests/CMakeFiles/supertest.dir/rule:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/supertest.dir/rule
+.PHONY : tests/CMakeFiles/supertest.dir/rule
+
+# Convenience name for target.
+supertest: tests/CMakeFiles/supertest.dir/rule
+.PHONY : supertest
+
+# fast build rule for target.
+supertest/fast:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/supertest.dir/build.make tests/CMakeFiles/supertest.dir/build
+.PHONY : supertest/fast
+
+# Convenience name for target.
+tests/CMakeFiles/unified_test.dir/rule:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/unified_test.dir/rule
+.PHONY : tests/CMakeFiles/unified_test.dir/rule
+
+# Convenience name for target.
+unified_test: tests/CMakeFiles/unified_test.dir/rule
+.PHONY : unified_test
+
+# fast build rule for target.
+unified_test/fast:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unified_test.dir/build.make tests/CMakeFiles/unified_test.dir/build
+.PHONY : unified_test/fast
+
+benchmark.o: benchmark.cpp.o
+.PHONY : benchmark.o
+
+# target to build an object file
+benchmark.cpp.o:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/benchmark.dir/build.make tests/CMakeFiles/benchmark.dir/benchmark.cpp.o
+.PHONY : benchmark.cpp.o
+
+benchmark.i: benchmark.cpp.i
+.PHONY : benchmark.i
+
+# target to preprocess a source file
+benchmark.cpp.i:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/benchmark.dir/build.make tests/CMakeFiles/benchmark.dir/benchmark.cpp.i
+.PHONY : benchmark.cpp.i
+
+benchmark.s: benchmark.cpp.s
+.PHONY : benchmark.s
+
+# target to generate assembly for a file
+benchmark.cpp.s:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/benchmark.dir/build.make tests/CMakeFiles/benchmark.dir/benchmark.cpp.s
+.PHONY : benchmark.cpp.s
+
 comprehensive_test.o: comprehensive_test.cpp.o
 .PHONY : comprehensive_test.o
 
@@ -427,6 +496,54 @@ repro_demo_failure.cpp.s:
 	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/repro_demo_failure.dir/build.make tests/CMakeFiles/repro_demo_failure.dir/repro_demo_failure.cpp.s
 .PHONY : repro_demo_failure.cpp.s
 
+supertest.o: supertest.cpp.o
+.PHONY : supertest.o
+
+# target to build an object file
+supertest.cpp.o:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/supertest.dir/build.make tests/CMakeFiles/supertest.dir/supertest.cpp.o
+.PHONY : supertest.cpp.o
+
+supertest.i: supertest.cpp.i
+.PHONY : supertest.i
+
+# target to preprocess a source file
+supertest.cpp.i:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/supertest.dir/build.make tests/CMakeFiles/supertest.dir/supertest.cpp.i
+.PHONY : supertest.cpp.i
+
+supertest.s: supertest.cpp.s
+.PHONY : supertest.s
+
+# target to generate assembly for a file
+supertest.cpp.s:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/supertest.dir/build.make tests/CMakeFiles/supertest.dir/supertest.cpp.s
+.PHONY : supertest.cpp.s
+
+unified_test.o: unified_test.cpp.o
+.PHONY : unified_test.o
+
+# target to build an object file
+unified_test.cpp.o:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unified_test.dir/build.make tests/CMakeFiles/unified_test.dir/unified_test.cpp.o
+.PHONY : unified_test.cpp.o
+
+unified_test.i: unified_test.cpp.i
+.PHONY : unified_test.i
+
+# target to preprocess a source file
+unified_test.cpp.i:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unified_test.dir/build.make tests/CMakeFiles/unified_test.dir/unified_test.cpp.i
+.PHONY : unified_test.cpp.i
+
+unified_test.s: unified_test.cpp.s
+.PHONY : unified_test.s
+
+# target to generate assembly for a file
+unified_test.cpp.s:
+	cd /Users/will/dev/BCHLight/build_wasm && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unified_test.dir/build.make tests/CMakeFiles/unified_test.dir/unified_test.cpp.s
+.PHONY : unified_test.cpp.s
+
 unit_tests.o: unit_tests.cpp.o
 .PHONY : unit_tests.o
 
@@ -488,14 +605,20 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... benchmark"
 	@echo "... comprehensive_test"
 	@echo "... fast_bench"
 	@echo "... kernel_bch"
 	@echo "... kernel_bench"
 	@echo "... legacy_compat_test"
 	@echo "... repro_demo_failure"
+	@echo "... supertest"
+	@echo "... unified_test"
 	@echo "... unit_tests"
 	@echo "... verify_wasm_cpp_match"
+	@echo "... benchmark.o"
+	@echo "... benchmark.i"
+	@echo "... benchmark.s"
 	@echo "... comprehensive_test.o"
 	@echo "... comprehensive_test.i"
 	@echo "... comprehensive_test.s"
@@ -514,6 +637,12 @@ help:
 	@echo "... repro_demo_failure.o"
 	@echo "... repro_demo_failure.i"
 	@echo "... repro_demo_failure.s"
+	@echo "... supertest.o"
+	@echo "... supertest.i"
+	@echo "... supertest.s"
+	@echo "... unified_test.o"
+	@echo "... unified_test.i"
+	@echo "... unified_test.s"
 	@echo "... unit_tests.o"
 	@echo "... unit_tests.i"
 	@echo "... unit_tests.s"

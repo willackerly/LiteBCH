@@ -31,6 +31,9 @@ default_target: all
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -64,16 +67,6 @@ CMAKE_BINARY_DIR = /Users/will/dev/BCHLight/build_wasm
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	/opt/homebrew/bin/ctest $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -221,7 +214,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... basic_usage"
 	@echo "... basic_usage.o"
 	@echo "... basic_usage.i"

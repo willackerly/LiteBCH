@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o"
   "CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o.d"
-  "verify_wasm_cpp_match"
+  "verify_wasm_cpp_match.js"
   "verify_wasm_cpp_match.pdb"
 )
 

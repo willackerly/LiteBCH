@@ -1,6 +1,8 @@
 #ifndef LITE_BCH_H
 #define LITE_BCH_H
 
+#include <cstdint>
+#include <cstring>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -45,17 +47,35 @@ private:
   int N;
   int K; // N - redundancy
   int t;
-  int ecc_bytes; // Exposed for convenience
 
 protected:
   int m;       // Order of Galois Field (2^m)
   int d;       // Design distance (2*t + 1)
   int n_rdncy; // Number of parity bits
 
+  // Sizing
+  int ecc_bytes;
+  int ecc_bits;
+  int ecc_words;
+
   std::vector<I> alpha_to; // Log table
   std::vector<I> index_of; // Antilog table
   std::vector<I> p;        // Primitive polynomial
   std::vector<I> g;        // Generator polynomial
+
+  // Fast Encoding LUT [256][ecc_words]
+  std::vector<std::vector<uint32_t>> encode_lut;
+
+  // Fast Decoding: Syndrome LUT [2*t + 1][256]
+  // syndrome_lut[i][b] = value of byte 'b' evaluated at alpha^i
+  std::vector<std::vector<int>> syndrome_lut;
+
+public:
+  // Fast Byte-Oriented Decoding
+  // Input: data (len bytes), ecc (ecc_bytes)
+  // Corrects data in-place.
+  // Returns number of errors corrected, or -1 if uncorrectable.
+  int decode(uint8_t *data, size_t len, uint8_t *ecc);
 
 private:
   // Decoding buffers
@@ -72,6 +92,7 @@ private:
   void init_galois();
   void select_polynomial();
   void compute_generator_polynomial();
+  void init_fast_tables();
 
   // Core logic
   void __encode(const B *U_K, B *par);

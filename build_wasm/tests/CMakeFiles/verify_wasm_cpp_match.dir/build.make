@@ -27,6 +27,9 @@
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -73,18 +76,19 @@ tests/CMakeFiles/verify_wasm_cpp_match.dir/codegen:
 .PHONY : tests/CMakeFiles/verify_wasm_cpp_match.dir/codegen
 
 tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o: tests/CMakeFiles/verify_wasm_cpp_match.dir/flags.make
+tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o: tests/CMakeFiles/verify_wasm_cpp_match.dir/includes_CXX.rsp
 tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o: /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp
 tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o: tests/CMakeFiles/verify_wasm_cpp_match.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o"
-	cd /Users/will/dev/BCHLight/build_wasm/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o -MF CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o.d -o CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o -c /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp
+	cd /Users/will/dev/BCHLight/build_wasm/tests && /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -c /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o -MF CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o.d -o CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o -fPIC
 
 tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.i"
-	cd /Users/will/dev/BCHLight/build_wasm/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp > CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.i
+	cd /Users/will/dev/BCHLight/build_wasm/tests && /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp > CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.i
 
 tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.s"
-	cd /Users/will/dev/BCHLight/build_wasm/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp -o CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.s
+	cd /Users/will/dev/BCHLight/build_wasm/tests && /opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/will/dev/BCHLight/tests/verify_wasm_cpp_match.cpp -o CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.s
 
 # Object files for target verify_wasm_cpp_match
 verify_wasm_cpp_match_OBJECTS = \
@@ -93,15 +97,17 @@ verify_wasm_cpp_match_OBJECTS = \
 # External object files for target verify_wasm_cpp_match
 verify_wasm_cpp_match_EXTERNAL_OBJECTS =
 
-tests/verify_wasm_cpp_match: tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o
-tests/verify_wasm_cpp_match: tests/CMakeFiles/verify_wasm_cpp_match.dir/build.make
-tests/verify_wasm_cpp_match: liblitebch.a
-tests/verify_wasm_cpp_match: tests/CMakeFiles/verify_wasm_cpp_match.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable verify_wasm_cpp_match"
+tests/verify_wasm_cpp_match.js: tests/CMakeFiles/verify_wasm_cpp_match.dir/verify_wasm_cpp_match.cpp.o
+tests/verify_wasm_cpp_match.js: tests/CMakeFiles/verify_wasm_cpp_match.dir/build.make
+tests/verify_wasm_cpp_match.js: liblitebch.a
+tests/verify_wasm_cpp_match.js: tests/CMakeFiles/verify_wasm_cpp_match.dir/linkLibs.rsp
+tests/verify_wasm_cpp_match.js: tests/CMakeFiles/verify_wasm_cpp_match.dir/objects1.rsp
+tests/verify_wasm_cpp_match.js: tests/CMakeFiles/verify_wasm_cpp_match.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable verify_wasm_cpp_match.js"
 	cd /Users/will/dev/BCHLight/build_wasm/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/verify_wasm_cpp_match.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-tests/CMakeFiles/verify_wasm_cpp_match.dir/build: tests/verify_wasm_cpp_match
+tests/CMakeFiles/verify_wasm_cpp_match.dir/build: tests/verify_wasm_cpp_match.js
 .PHONY : tests/CMakeFiles/verify_wasm_cpp_match.dir/build
 
 tests/CMakeFiles/verify_wasm_cpp_match.dir/clean:

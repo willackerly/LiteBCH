@@ -1,1 +1,1 @@
-/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/fast_bench.dir/fast_bench.cpp.o -o fast_bench  ../liblitebch.a
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -O3 -DNDEBUG @CMakeFiles/fast_bench.dir/objects1.rsp -o fast_bench.js @CMakeFiles/fast_bench.dir/linkLibs.rsp

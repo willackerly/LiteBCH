@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/basic_usage.dir/basic_usage.cpp.o"
   "CMakeFiles/basic_usage.dir/basic_usage.cpp.o.d"
-  "basic_usage"
+  "basic_usage.js"
   "basic_usage.pdb"
 )
 

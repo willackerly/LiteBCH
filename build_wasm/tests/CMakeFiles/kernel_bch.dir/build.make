@@ -27,6 +27,9 @@
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -73,18 +76,19 @@ tests/CMakeFiles/kernel_bch.dir/codegen:
 .PHONY : tests/CMakeFiles/kernel_bch.dir/codegen
 
 tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o: tests/CMakeFiles/kernel_bch.dir/flags.make
+tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o: tests/CMakeFiles/kernel_bch.dir/includes_C.rsp
 tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o: /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c
 tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o: tests/CMakeFiles/kernel_bch.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o"
-	cd /Users/will/dev/BCHLight/build_wasm/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o -MF CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o.d -o CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o -c /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c
+	cd /Users/will/dev/BCHLight/build_wasm/tests && /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc -c /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o -MF CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o.d -o CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o -fPIC
 
 tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.i"
-	cd /Users/will/dev/BCHLight/build_wasm/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c > CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.i
+	cd /Users/will/dev/BCHLight/build_wasm/tests && /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c > CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.i
 
 tests/CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.s"
-	cd /Users/will/dev/BCHLight/build_wasm/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c -o CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.s
+	cd /Users/will/dev/BCHLight/build_wasm/tests && /opt/homebrew/Cellar/emscripten/4.0.21/libexec/emcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/will/dev/BCHLight/tests/external/kernel_bch/bch_codec.c -o CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.s
 
 # Object files for target kernel_bch
 kernel_bch_OBJECTS = \

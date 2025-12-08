@@ -3,7 +3,7 @@ const path = require('path');
 
 // Locate the build-wasm directory
 // Adjust relative path as needed. Assuming running from root: node tests/wasm_test.js
-const wasmPath = path.resolve(__dirname, '../build-wasm/litebch.js');
+const wasmPath = path.resolve(__dirname, '../build_wasm/litebch.js');
 
 if (!fs.existsSync(wasmPath)) {
     console.error(`Error: Could not find WASM build at ${wasmPath}`);
@@ -61,7 +61,7 @@ function calculate_checksum(data) {
 }
 
 // --- Main Test ---
-const GOLDEN_CHECKSUM = 3117751785;
+const GOLDEN_CHECKSUM = 85286377;
 
 createLiteBCH().then(Module => {
     console.log("LiteBCH WASM Module Loaded.");

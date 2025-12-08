@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o"
   "CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o.d"
-  "litebch"
+  "litebch.js"
   "litebch.pdb"
 )
 

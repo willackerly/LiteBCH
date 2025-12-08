@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/legacy_compat_test.dir/legacy_compat_test.cpp.o"
   "CMakeFiles/legacy_compat_test.dir/legacy_compat_test.cpp.o.d"
-  "legacy_compat_test"
+  "legacy_compat_test.js"
   "legacy_compat_test.pdb"
 )
 

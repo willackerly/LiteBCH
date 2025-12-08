@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/comprehensive_test.dir/comprehensive_test.cpp.o"
   "CMakeFiles/comprehensive_test.dir/comprehensive_test.cpp.o.d"
-  "comprehensive_test"
+  "comprehensive_test.js"
   "comprehensive_test.pdb"
 )
 
