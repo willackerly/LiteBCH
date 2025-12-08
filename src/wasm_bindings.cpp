@@ -52,6 +52,76 @@ lite::LiteBCH *create_litebch_custom(int N, int t, const std::vector<int> &p) {
   }
 }
 
+// Wrapper for Fast Encoding (Bit-Vector Interface)
+// Adapts the byte-oriented fast encoder to the bit-oriented JS interface
+std::vector<int> encode_fast_wrapper(lite::LiteBCH &bch,
+                                     const std::vector<int> &msg_bits) {
+  int K = bch.get_K();
+  int N = bch.get_N();
+  int ecc_bytes = bch.get_ecc_bytes();
+  int n_rdncy = N - K;
+
+  if (msg_bits.size() != (size_t)K) {
+    throw std::invalid_argument("Message size must be K");
+  }
+
+  // 1. Pack Bits to Bytes (MSB First / High Degree First)
+  // Matching LiteBCH::decode logic
+  std::vector<uint8_t> data((K + 7) / 8, 0);
+  for (int i = 0; i < K; ++i) {
+    // Message bits are 0..K-1.
+    // In our legacy/standard layout, these are high degree polynomials.
+    // We pack them such that the first byte contains the highest degree terms.
+    // Actually, let's follow the standard big-endian bit packing used in
+    // networking, which usually matches the polynomial order if bit 0 is top.
+    // Let's emulate what decode dies:
+    // int stream_pos = K - 1 - i;
+    // data[stream_pos / 8] |= (1 << (7 - (stream_pos % 8)));
+    // BUT encoding usually takes data directly.
+    // LiteBCH::encode (fast) expects standard byte array.
+    // Let's just pack conventionally.
+    // If msg_bits[0] is the first bit of the message...
+    // We pack 8 bits into a byte.
+    // But we need to be careful about bit endianness vs polynomial order.
+    // Legacy __encode uses bitwise LFSR on U_K[i] (High Degree down to 0).
+    // Fast encode iterates bytes.
+    // We'll trust that packing 0..7 into byte 0 (MSB..LSB) is correct for the
+    // fast encoder if it was written to match standard comms.
+    //
+    // Actually, looking at decode():
+    // it maps received_bits[n_rdncy + i] (message part) to data bytes.
+    int stream_pos = K - 1 - i;
+    if (msg_bits[i]) {
+      data[stream_pos / 8] |= (1 << (7 - (stream_pos % 8)));
+    }
+  }
+
+  // 2. Run Fast Encode
+  std::vector<uint8_t> ecc(ecc_bytes);
+  bch.encode(data.data(), data.size(), ecc.data());
+
+  // 3. Unpack ECC to Bits and Construct Codeword [Parity | Message]
+  std::vector<int> codeword(N);
+
+  // Parity (ECC)
+  // decode() expects ecc bits at indices 0..n_rdncy-1
+  // and packs them: ecc[i/8] |= (1 << (i%8)) -> LSB packing for ECC!
+  for (int i = 0; i < n_rdncy; ++i) {
+    if ((ecc[i / 8] >> (i % 8)) & 1) {
+      codeword[i] = 1;
+    } else {
+      codeword[i] = 0;
+    }
+  }
+
+  // Message
+  for (int i = 0; i < K; ++i) {
+    codeword[n_rdncy + i] = msg_bits[i];
+  }
+
+  return codeword;
+}
+
 EMSCRIPTEN_BINDINGS(litebch_module) {
   register_vector<int>("IntVector");
 
@@ -67,6 +137,9 @@ EMSCRIPTEN_BINDINGS(litebch_module) {
       .function("encode",
                 static_cast<std::vector<int> (lite::LiteBCH::*)(
                     const std::vector<int> &)>(&lite::LiteBCH::encode))
+
+      // Fast Encode Wrapper
+      .function("encode_fast", &encode_fast_wrapper)
 
       // Raw Byte Buffer Encode (High Perf)
       // JS must manage memory (alloc/free) and pass pointers.

@@ -152,4 +152,4 @@ std::vector<int> bits_out = bch.encode(bits_in);
 ## 📜 License
 MIT License. Free for commercial and private use.
 
-Copyright (c) 2024 Will Ackerly
+Copyright (c) 2025 Will Ackerly
