@@ -1,0 +1,1 @@
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -O3 -DNDEBUG @CMakeFiles/basic_usage.dir/objects1.rsp -o basic_usage.js @CMakeFiles/basic_usage.dir/linkLibs.rsp

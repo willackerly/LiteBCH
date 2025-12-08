@@ -1,0 +1,2 @@
+/usr/bin/ar qc libkernel_bch.a CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o
+/usr/bin/ranlib libkernel_bch.a

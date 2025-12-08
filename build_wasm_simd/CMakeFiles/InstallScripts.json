@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/will/dev/BCHLight/build_wasm_simd/cmake_install.cmake",
+		"/Users/will/dev/BCHLight/build_wasm_simd/tests/cmake_install.cmake",
+		"/Users/will/dev/BCHLight/build_wasm_simd/examples/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -13,6 +13,12 @@ target_include_directories(kernel_bch PRIVATE external/kernel_bch)
 # Comprehensive Decoder Test
 add_executable(comprehensive_test comprehensive_test.cpp)
 target_link_libraries(comprehensive_test PRIVATE litebch::litebch)
+if(EMSCRIPTEN)
+    target_link_options(comprehensive_test PRIVATE 
+        "SHELL:-sALLOW_MEMORY_GROWTH=1"
+        "SHELL:-sINITIAL_MEMORY=64MB"
+    )
+endif()
 
 
 # --- AFF3CT Optional Verification ---

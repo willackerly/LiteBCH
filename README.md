@@ -8,6 +8,7 @@
 
 **LiteBCH** is a dependency-free C++ header library for **BCH Error Correction**. It combines the mathematical rigor of `aff3ct` with the extreme performance optimization of the Linux Kernel (~850 Mbps), all in a single 570-line file that compiles instantly.
 
+
 ---
 
 ## 🚀 Quick Start
@@ -116,6 +117,30 @@ cmake -S . -B build && cmake --build build
 
 # 2. Run Comprehensive Test
 ./build/tests/comprehensive_test --verify-wasm tests/wasm_comprehensive_test.js --verify-aff3ct
+```
+
+### Performance & Optimization Flags
+
+By default, the build uses maximum compiler optimizations (`-O3`, `-funroll-loops`).
+
+**SIMD Support (Optional):**
+You can enable SIMD instructions (AVX/SSE on Native, 128-bit SIMD on WASM) for significant performance gains (see benchmarks above).
+
+**Native Build with SIMD:**
+```bash
+cmake .. -DLITEBCH_ENABLE_SIMD=ON
+make
+```
+
+**WASM Build with SIMD:**
+```bash
+emcmake cmake .. -DLITEBCH_BUILD_WASM=ON -DLITEBCH_ENABLE_SIMD=ON
+emmake make
+```
+
+To disable default high-performance optimizations (e.g. for debugging):
+```bash
+cmake .. -DLITEBCH_MAX_PERFORMANCE=OFF
 ```
 
 ---

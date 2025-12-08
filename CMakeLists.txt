@@ -21,6 +21,23 @@ if(NOT EMSCRIPTEN)
     )
 endif()
 
+# Configuration Options
+option(LITEBCH_MAX_PERFORMANCE "Enable maximum performance optimizations (-O3, unroll)" ON)
+option(LITEBCH_ENABLE_SIMD "Enable SIMD instructions (-msimd128 for WASM, -march=native for host)" OFF)
+
+if(LITEBCH_MAX_PERFORMANCE)
+    add_compile_options(-O3 -funroll-loops)
+endif()
+
+if(LITEBCH_ENABLE_SIMD)
+    if(EMSCRIPTEN)
+        add_compile_options(-msimd128)
+    else()
+        add_compile_options(-march=native)
+    endif()
+endif()
+
+
 # Compiler Options (Optimization by default for Release)
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
