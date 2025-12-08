@@ -111,7 +111,10 @@ LiteBCH includes a unified verification suite that benchmarks against both the N
 
 ### Verify it yourself
 ```bash
-# Runs Native + WASM + Aff3ct verification
+# 1. Build Verification Suite
+cmake -S . -B build && cmake --build build
+
+# 2. Run Comprehensive Test
 ./build/tests/comprehensive_test --verify-wasm tests/wasm_comprehensive_test.js --verify-aff3ct
 ```
 

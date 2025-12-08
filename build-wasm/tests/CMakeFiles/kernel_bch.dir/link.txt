@@ -1,2 +1,0 @@
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emar qc libkernel_bch.a CMakeFiles/kernel_bch.dir/external/kernel_bch/bch_codec.c.o
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emranlib libkernel_bch.a

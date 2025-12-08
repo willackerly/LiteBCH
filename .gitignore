@@ -1,9 +1,21 @@
+# Build Directories
 build/
+build_wasm/
+build-wasm/
+_deps/
+
+# System Files
 .DS_Store
 .vscode/
+
+# Build Artifacts
 *.o
 *.a
 *.dylib
+*.log
+*.out
+
+# Test Artifacts / Binaries
 tests/supertest
 tests/benchmark
 tests/legacy_compat_test
@@ -13,4 +25,5 @@ tests/kernel_bench
 tests/repro_demo_failure
 tests/verify_wasm_cpp_match
 tests/comprehensive_test
+tests/unified_test
 comprehensive_test_output.txt

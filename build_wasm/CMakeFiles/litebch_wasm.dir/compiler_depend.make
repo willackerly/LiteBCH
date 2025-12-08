@@ -224,7 +224,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/bit_reference.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/byte.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/complex.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/deque.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/fstream.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/functional.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/ios.h \
@@ -233,9 +232,7 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/memory_resource.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/ostream.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/pair.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/queue.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/sstream.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/stack.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/streambuf.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/string.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/string_view.h \
@@ -350,8 +347,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__new/placement_new_delete.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__node_handle \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__numeric/partial_sum.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__ostream/basic_ostream.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__ostream/put_character_sequence.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__random/is_valid.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__random/log2.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__random/uniform_int_distribution.h \
@@ -431,7 +426,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_base_of.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_bounded_array.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_callable.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_char_like_type.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_class.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_compound.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_const.h \
@@ -545,7 +539,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/array \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/atomic \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/bit \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/bitset \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cassert \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cctype \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cerrno \
@@ -564,16 +557,12 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/ctype.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cwchar \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cwctype \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/deque \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/errno.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/exception \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/format \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/functional \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/initializer_list \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/ios \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/iosfwd \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/iostream \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/istream \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/iterator \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/limits \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/locale \
@@ -583,11 +572,7 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/mutex \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/new \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/optional \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/ostream \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/print \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/queue \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/ratio \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/stack \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/stddef.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/stdexcept \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/stdio.h \
@@ -633,7 +618,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/string.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/strings.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/time.h \
-  /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/unistd.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/wasi/api.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/wchar.h \
   /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/wctype.h \
@@ -684,8 +668,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/llvm/lib/clang/22/include/__stdarg___gnuc_va_list.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/wctype.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/unistd.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/strings.h:
 
@@ -739,10 +721,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/stddef.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/stack:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/queue:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/optional:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/new:
@@ -753,8 +731,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/locale:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/istream:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/limits:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/ios:
@@ -764,8 +740,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/functional:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/exception:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/deque:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cwctype:
 
@@ -796,8 +770,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/climits:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cctype:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/bitset:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/bit:
 
@@ -848,8 +820,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/remove_volatile.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/remove_cvref.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/iostream:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/remove_cv.h:
 
@@ -977,9 +947,13 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/conditional.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/can_extract_key.h:
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__debug_utils/randomize_range.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/aligned_union.h:
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/common_reference.h:
+
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/not_fn.h:
+
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/aligned_storage.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/cerrno:
 
@@ -1087,8 +1061,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__system_error/error_code.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__ostream/put_character_sequence.h:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/auto_ptr.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/array_cookie.h:
@@ -1106,6 +1078,10 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__utility/convert_to_integral.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/allocator.h:
+
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__configuration/compiler.h:
+
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/addressof.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_convertible.h:
 
@@ -1291,16 +1267,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/streambuf.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/stack.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__configuration/compiler.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/addressof.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__bit/countl.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/queue.h:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/ostream.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/unique_ptr.h:
@@ -1327,8 +1293,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/weak_result_type.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/print:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/function.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/reference_wrapper.h:
@@ -1338,10 +1302,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/ranges_operations.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/operations.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/aligned_storage.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/not_fn.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/uses_allocator.h:
 
@@ -1363,9 +1323,9 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/hash.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/alignment_of.h:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/includes.h:
+
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/alignment_of.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__math/min_max.h:
 
@@ -1441,6 +1401,8 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/align.h:
 
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__bit/countl.h:
+
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__config_site:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__functional/binder1st.h:
@@ -1466,8 +1428,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__ios/fpos.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/allocator_traits.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/ostream:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__math/copysign.h:
 
@@ -1512,10 +1472,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__concepts/movable.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__chrono/steady_clock.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/common_reference.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__debug_utils/randomize_range.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__utility/move.h:
 
@@ -1576,8 +1532,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__chrono/convert_to_timespec.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__ranges/data.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/is_char_like_type.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/sstream.h:
 
@@ -1711,13 +1665,9 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__concepts/semiregular.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__ostream/basic_ostream.h:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/pop_heap.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__concepts/copyable.h:
-
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/format:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/remove_copy.h:
 
@@ -1879,6 +1829,8 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/find_end.h:
 
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/aligned_union.h:
+
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__concepts/class_or_enum.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/nth_element.h:
@@ -1911,8 +1863,6 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/equal_range.h:
 
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__fwd/deque.h:
-
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__utility/declval.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/bits/stdint.h:
@@ -1926,6 +1876,8 @@ CMakeFiles/litebch_wasm.dir/src/wasm_bindings.cpp.o: /Users/will/dev/BCHLight/sr
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__memory/allocate_at_least.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__algorithm/copy_move_common.h:
+
+/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__type_traits/can_extract_key.h:
 
 /opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot/include/c++/v1/__tree:
 

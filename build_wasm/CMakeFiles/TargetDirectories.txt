@@ -6,10 +6,3 @@
 /Users/will/dev/BCHLight/build_wasm/CMakeFiles/install.dir
 /Users/will/dev/BCHLight/build_wasm/CMakeFiles/install/local.dir
 /Users/will/dev/BCHLight/build_wasm/CMakeFiles/install/strip.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/basic_usage.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/edit_cache.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/rebuild_cache.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/list_install_components.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/install.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/install/local.dir
-/Users/will/dev/BCHLight/build_wasm/examples/CMakeFiles/install/strip.dir

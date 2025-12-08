@@ -68,43 +68,21 @@ CMAKE_BINARY_DIR = /Users/will/dev/BCHLight/build_wasm
 # The main recursive "all" target.
 all: CMakeFiles/litebch.dir/all
 all: CMakeFiles/litebch_wasm.dir/all
-all: examples/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/litebch.dir/codegen
 codegen: CMakeFiles/litebch_wasm.dir/codegen
-codegen: examples/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall: examples/preinstall
+preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/litebch.dir/clean
 clean: CMakeFiles/litebch_wasm.dir/clean
-clean: examples/clean
 .PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory examples
-
-# Recursive "all" directory target.
-examples/all: examples/CMakeFiles/basic_usage.dir/all
-.PHONY : examples/all
-
-# Recursive "codegen" directory target.
-examples/codegen: examples/CMakeFiles/basic_usage.dir/codegen
-.PHONY : examples/codegen
-
-# Recursive "preinstall" directory target.
-examples/preinstall:
-.PHONY : examples/preinstall
-
-# Recursive "clean" directory target.
-examples/clean: examples/CMakeFiles/basic_usage.dir/clean
-.PHONY : examples/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/litebch.dir
@@ -113,7 +91,7 @@ examples/clean: examples/CMakeFiles/basic_usage.dir/clean
 CMakeFiles/litebch.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch.dir/build.make CMakeFiles/litebch.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch.dir/build.make CMakeFiles/litebch.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=3,4 "Built target litebch"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=1,2 "Built target litebch"
 .PHONY : CMakeFiles/litebch.dir/all
 
 # Build rule for subdir invocation for target.
@@ -130,7 +108,7 @@ litebch: CMakeFiles/litebch.dir/rule
 # codegen rule for target.
 CMakeFiles/litebch.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch.dir/build.make CMakeFiles/litebch.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=3,4 "Finished codegen for target litebch"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=1,2 "Finished codegen for target litebch"
 .PHONY : CMakeFiles/litebch.dir/codegen
 
 # clean rule for target.
@@ -145,7 +123,7 @@ CMakeFiles/litebch.dir/clean:
 CMakeFiles/litebch_wasm.dir/all: CMakeFiles/litebch.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch_wasm.dir/build.make CMakeFiles/litebch_wasm.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch_wasm.dir/build.make CMakeFiles/litebch_wasm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=5,6 "Built target litebch_wasm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=3,4 "Built target litebch_wasm"
 .PHONY : CMakeFiles/litebch_wasm.dir/all
 
 # Build rule for subdir invocation for target.
@@ -162,45 +140,13 @@ litebch_wasm: CMakeFiles/litebch_wasm.dir/rule
 # codegen rule for target.
 CMakeFiles/litebch_wasm.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch_wasm.dir/build.make CMakeFiles/litebch_wasm.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=5,6 "Finished codegen for target litebch_wasm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=3,4 "Finished codegen for target litebch_wasm"
 .PHONY : CMakeFiles/litebch_wasm.dir/codegen
 
 # clean rule for target.
 CMakeFiles/litebch_wasm.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch_wasm.dir/build.make CMakeFiles/litebch_wasm.dir/clean
 .PHONY : CMakeFiles/litebch_wasm.dir/clean
-
-#=============================================================================
-# Target rules for target examples/CMakeFiles/basic_usage.dir
-
-# All Build rule for target.
-examples/CMakeFiles/basic_usage.dir/all: CMakeFiles/litebch.dir/all
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/basic_usage.dir/build.make examples/CMakeFiles/basic_usage.dir/depend
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/basic_usage.dir/build.make examples/CMakeFiles/basic_usage.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=1,2 "Built target basic_usage"
-.PHONY : examples/CMakeFiles/basic_usage.dir/all
-
-# Build rule for subdir invocation for target.
-examples/CMakeFiles/basic_usage.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/will/dev/BCHLight/build_wasm/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/basic_usage.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/will/dev/BCHLight/build_wasm/CMakeFiles 0
-.PHONY : examples/CMakeFiles/basic_usage.dir/rule
-
-# Convenience name for target.
-basic_usage: examples/CMakeFiles/basic_usage.dir/rule
-.PHONY : basic_usage
-
-# codegen rule for target.
-examples/CMakeFiles/basic_usage.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/basic_usage.dir/build.make examples/CMakeFiles/basic_usage.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/will/dev/BCHLight/build_wasm/CMakeFiles --progress-num=1,2 "Finished codegen for target basic_usage"
-.PHONY : examples/CMakeFiles/basic_usage.dir/codegen
-
-# clean rule for target.
-examples/CMakeFiles/basic_usage.dir/clean:
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/basic_usage.dir/build.make examples/CMakeFiles/basic_usage.dir/clean
-.PHONY : examples/CMakeFiles/basic_usage.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

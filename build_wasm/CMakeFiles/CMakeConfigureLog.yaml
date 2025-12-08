@@ -1912,3 +1912,54 @@ events:
         - "/"
       CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
 ...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/"
+    searched_directories:
+      - "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform.framework/Headers/Emscripten.cmake"
+    found: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/opt/homebrew/bin"
+        - "/opt/homebrew/sbin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/will/.antigravity/antigravity/bin"
+        - "/Users/will/google-cloud-sdk/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+      CMAKE_INSTALL_PREFIX: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cache/sysroot"
+...

@@ -234,10 +234,8 @@ void LiteBCH::init_fast_tables() {
 
       // Shift and add g
       for (int k = ecc_bits - 1; k > 0; --k) {
-        // Legacy __encode uses (g[j] & feedback) for j > 0
         rem[k] = rem[k - 1] ^ (g[k] & feedback);
       }
-      // Legacy uses (g[0] && feedback) for j = 0
       rem[0] = (g[0] ? feedback : 0);
     }
 
@@ -318,9 +316,7 @@ void LiteBCH::encode(const uint8_t *data, size_t len, uint8_t *ecc_out) {
     uint8_t input = data[i];
     uint8_t feedback = get_top_byte(par, ecc_bits) ^ input;
     shift_left_8(par, ecc_words);
-    apply_mask(
-        par,
-        ecc_bits); // Masking needed if ecc_bits < 8? Or just consistency.
+    apply_mask(par, ecc_bits);
 
     const auto &mask = encode_lut[feedback];
     for (int w = 0; w < ecc_words; ++w) {
@@ -338,8 +334,7 @@ void LiteBCH::encode(const uint8_t *data, size_t len, uint8_t *ecc_out) {
       int input_bit = (last_byte >> bit_pos) & 1;
 
       // LFSR Step (1 bit)
-      // Extract top BIT of par
-      // get_top_byte extracts 8 bits. We need bit at ecc_bits-1.
+      // Extract top bit of par
       int top_bit = 0;
       int word_idx = (ecc_bits - 1) / 32;
       int bit_idx = (ecc_bits - 1) % 32;
@@ -357,15 +352,9 @@ void LiteBCH::encode(const uint8_t *data, size_t len, uint8_t *ecc_out) {
       }
 
       // Add g if feedback
-      // g is vector<I>. We need packed g?
-      // We don't have packed g. We have g indices.
-      // Re-use init_fast_tables logic or pre-compute packed g?
-      // Pre-computing packed g is safest. Or just iterate g.
       if (feedback) {
         for (int k = 0; k < ecc_bits; ++k) {
-          // g[k] corresponds to x^k.
-          // par is packed little endian.
-          if (g[k]) { // g is binary now
+          if (g[k]) { // g is binary
             int w = k / 32;
             int b = k % 32;
             par[w] ^= (1U << b);
@@ -393,18 +382,8 @@ std::vector<LiteBCH::B> LiteBCH::encode(const std::vector<B> &message_bits) {
     throw std::invalid_argument("Message size must be K=" + std::to_string(K));
   }
   std::vector<B> encoded(N);
-  // par (parity) will be at the BEGINNING in this logic, then copied?
-  // aff3ct typically constructs [Parity | Message] or [Message | Parity]
-  // depending on config. Let's decode Encoder_BCH.cpp logic: _encode copies
-  // U_K (message) to the END of X_N (codeword) and parity to the beginning.
-  // Wait, lines 64-67:
-  // __encode(U_K, X_N) -> writes parity to X_N[0..n_rdncy]
-  // copy U_K to X_N + n_rdncy.
-  // So systematic format is: [Parity | Message] in the output buffer?
-  // But usually systematic is [Message | Parity].
-  // Let's check __encode: checks "feedback = U_K[i] ^ par[n_rdncy-1]"
-
-  // We will stick to the aff3ct layout: [Parity (n_rdncy) | Message (K)]
+  // Construct systematic form: [Parity | Message]
+  // This layout matches aff3ct conventions.
 
   std::vector<B> par(n_rdncy);
   __encode(message_bits.data(), par.data());
@@ -425,10 +404,7 @@ void LiteBCH::__encode(const B *U_K, B *par) {
     const auto feedback = U_K[i] ^ par[n_rdncy - 1];
     for (auto j = n_rdncy - 1; j > 0; j--)
       par[j] = par[j - 1] ^ (g[j] & feedback);
-    par[0] =
-        feedback ? (g[0] && feedback) : 0; // Fixed boolean logic from original
-    // Original: g[0] && feedback. g is int, feedback is bool/int.
-    // In simple GF(2), g[j] is 0 or 1.
+    par[0] = feedback ? (g[0] && feedback) : 0;
   }
 }
 
@@ -608,12 +584,8 @@ int LiteBCH::_decode(B *Y_N) {
 // ==========================================
 int LiteBCH::decode(uint8_t *data, size_t len, uint8_t *ecc) {
   // 1. Syndrome Calculation via Re-Encoding
-  // Optimization: S_j = R(alpha^j) = (Data*x^r + Ecc_recv)(alpha^j)
-  // We know Data*x^r = Q*g + Ecc_calc.
-  // So Data*x^r(alpha^j) = Ecc_calc(alpha^j).
-  // Thus S_j = Ecc_calc(alpha^j) + Ecc_recv(alpha^j) = (Ecc_calc +
-  // Ecc_recv)(alpha^j). We only need to compute syndromes on the XOR
-  // difference of ECCs.
+  // S_j = (Ecc_calc + Ecc_recv)(alpha^j) since Data*x^r matches for both
+  // We compute syndromes on the XOR difference of ECCs.
 
   std::vector<int> s_poly(2 * t + 1, 0); // Syndromes
 
@@ -633,21 +605,8 @@ int LiteBCH::decode(uint8_t *data, size_t len, uint8_t *ecc) {
     alpha_8_pow[i] = (i * 8) % N;
   }
 
-  // Process ECC Diff Bytes (Low Degree First? Check Encoder.)
-  // Encoder puts Parity at Low Degrees?
-  // Our encode() produces ECC bytes.
-  // init_fast_tables packs: rem[0] -> bit 0 of word 0.
-  // The LFSR state 'rem' represents coeff of x^0 ... x^r-1.
-  // So ecc[0] contains x^0..x^7.
-  // Thus we process ECC bytes from High Index (High Degree) to Low Index (Low
-  // Degree) for Horner. Wait, ECC[0] is x^0...x^7 (Low Degree). Horner
-  // scheme: ( ... ((C_k * x + C_{k-1}) * x + ... ) We want to evaluate at
-  // alpha^j. Poly = P_0 + P_1 x + ... = P_0 + x(P_1 + x(...)) Byte wise: B_0
-  // + B_1 x^8 + ... = B_0 + x^8(B_1 + x^8(B_2 ...)) No, that's expanding from
-  // 0. Horner usually starts from High Degree. ECC High bytes are at END of
-  // vector (if Little Endian polynomial). ecc[0] is Low Degree. ecc[last] is
-  // High Degree. So iterate k from ecc_len-1 down to 0.
-
+  // Process ECC bytes from high index (high degree terms) to low index.
+  // This matches Horner's method evaluation.
   int ecc_len = ecc_bytes;
   for (int k = ecc_len - 1; k >= 0; --k) {
     uint8_t b = calc_ecc[k];

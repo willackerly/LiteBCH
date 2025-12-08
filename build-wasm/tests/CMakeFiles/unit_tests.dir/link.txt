@@ -1,1 +1,0 @@
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -O3 -DNDEBUG @CMakeFiles/unit_tests.dir/objects1.rsp -o unit_tests.js @CMakeFiles/unit_tests.dir/linkLibs.rsp

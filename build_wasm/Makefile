@@ -190,19 +190,6 @@ litebch_wasm/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/litebch_wasm.dir/build.make CMakeFiles/litebch_wasm.dir/build
 .PHONY : litebch_wasm/fast
 
-#=============================================================================
-# Target rules for targets named basic_usage
-
-# Build rule for target.
-basic_usage: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 basic_usage
-.PHONY : basic_usage
-
-# fast build rule for target.
-basic_usage/fast:
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/basic_usage.dir/build.make examples/CMakeFiles/basic_usage.dir/build
-.PHONY : basic_usage/fast
-
 src/LiteBCH.o: src/LiteBCH.cpp.o
 .PHONY : src/LiteBCH.o
 
@@ -263,7 +250,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... basic_usage"
 	@echo "... litebch"
 	@echo "... litebch_wasm"
 	@echo "... src/LiteBCH.o"

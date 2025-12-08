@@ -11,7 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/4.2.0/CMakeCCompiler.cmake"
   "CMakeFiles/4.2.0/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.2.0/CMakeSystem.cmake"
-  "/Users/will/dev/BCHLight/examples/CMakeLists.txt"
   "/opt/homebrew/Cellar/emscripten/4.0.21/libexec/cmake/Modules/Platform/Emscripten.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake"
@@ -51,12 +50,10 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "examples/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/litebch.dir/DependInfo.cmake"
   "CMakeFiles/litebch_wasm.dir/DependInfo.cmake"
-  "examples/CMakeFiles/basic_usage.dir/DependInfo.cmake"
   )

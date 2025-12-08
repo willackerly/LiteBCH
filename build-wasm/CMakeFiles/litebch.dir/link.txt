@@ -1,2 +1,0 @@
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emar qc liblitebch.a CMakeFiles/litebch.dir/src/LiteBCH.cpp.o
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/emranlib liblitebch.a

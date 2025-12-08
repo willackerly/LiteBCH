@@ -1,1 +1,0 @@
-/opt/homebrew/Cellar/emscripten/4.0.21/libexec/em++ -O3 -DNDEBUG @CMakeFiles/legacy_compat_test.dir/objects1.rsp -o legacy_compat_test.js @CMakeFiles/legacy_compat_test.dir/linkLibs.rsp
