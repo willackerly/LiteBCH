@@ -64,6 +64,9 @@ We include `tests/wasm_supertest.js` and an **Interactive Health Check** in the 
 *   **Memory Safety**: Runs extensive fuzzing without leaks or alignment faults.
 *   **Correctness**: Validates recovery from random bit errors across all standard configurations.
 
+### Comprehensive C++ Verification
+For deep verification, `tests/comprehensive_test.cpp` can optionally link against the full `aff3ct` library to perform a **live, side-by-side verification** of every single vector processed, ensuring bit-exact equivalence with the industry reference.
+
 ---
 
 ## 📦 Usage (C++)

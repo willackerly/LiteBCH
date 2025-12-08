@@ -12,3 +12,5 @@ tests/fast_bench
 tests/kernel_bench
 tests/repro_demo_failure
 tests/verify_wasm_cpp_match
+tests/comprehensive_test
+comprehensive_test_output.txt
